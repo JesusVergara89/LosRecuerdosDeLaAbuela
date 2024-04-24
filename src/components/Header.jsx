@@ -1,8 +1,16 @@
 import React from 'react'
+import '../styles/Header.css'
+import logo from '../images/logoabuela.png'
 
 const Header = () => {
   return (
-    <div>Header</div>
+   <header>
+
+    <div className="logo">
+        <img src={logo} alt="" />
+    </div>
+
+   </header>
   )
 }
 

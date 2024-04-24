@@ -1,0 +1,29 @@
+* {
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+ --color1: #B5C0D0;
+ --color2: #CCD3CA;
+ --color3: #F5E8DD;
+ --color4: #EED3D9
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Abuela {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 200px;
+}
