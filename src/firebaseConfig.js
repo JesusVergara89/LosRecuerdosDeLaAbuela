@@ -5,12 +5,12 @@ import { getStorage } from 'firebase/storage'
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCICsvLbtb5NGq0zCP5UG-FvOxJoGwe3Go",
-    authDomain: "losrecuerdosdelaabuela-826a0.firebaseapp.com",
-    projectId: "losrecuerdosdelaabuela-826a0",
-    storageBucket: "losrecuerdosdelaabuela-826a0.appspot.com",
-    messagingSenderId: "965383450774",
-    appId: "1:965383450774:web:df3aca52661c18be1b12b7"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig)
