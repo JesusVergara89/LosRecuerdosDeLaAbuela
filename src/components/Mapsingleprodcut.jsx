@@ -6,14 +6,15 @@ const Mapsingleprodcut = ({ product }) => {
         <div className='Mapsingleprodcut'>
             <div className="card">
                 <img className="card-image" src={product.image} alt="Robot Image" />
+                <div className={product.discount_percentage > 0 ? "card-discount-abs" : ''}>{product.discount_percentage > 0 ? `- ${product.discount_percentage}%` : ' '}</div>
                 <div className="card-details-1">
                     <div className="card-likes">{`${product.likes.length} likes`}</div>
                     <div className="card-price">
                         {product.discount_percentage > 0 ? (
                             <>
-                                <span className="strike-through">${product.price}</span>
+                                <span className="strike-through">{`$${product.price}`}</span>
                                 &nbsp;
-                                <span>${product.price - (product.price * product.discount_percentage) / 100}</span>
+                                <span>{` - $${product.price - (product.price * product.discount_percentage) / 100}`}</span>
                             </>
                         ) : (
                             `$${product.price}`
@@ -23,7 +24,6 @@ const Mapsingleprodcut = ({ product }) => {
 
                 <div className="card-details-2">
                     <div className="card-description">{product.description}</div>
-                    <div className="card-discount">{product.discount_percentage > 0 ? `${product.discount_percentage}% off - New price: $${(product.price - (product.price * product.discount_percentage) / 100)}` : ''}</div>
                     <div className="card-quantity">{`Cantidad: ${product.quantity}`}</div>
                     <button className="card-btn-buy">
                         Comprar

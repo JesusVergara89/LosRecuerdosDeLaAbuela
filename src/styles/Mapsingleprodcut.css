@@ -5,12 +5,26 @@
     border-radius: 5px;
     overflow: hidden;
     width: 300px;
+    height: 600px;
     gap: 10px;
+    padding: 0px 0px 15px 0px;
+    position: relative;
 }
 
 .card-image {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-discount-abs {
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 168, 168);
+    position: absolute;
 }
 
 .card-details-1 {
@@ -28,6 +42,7 @@
 
 .card-description {
     font-size: 1rem;
+    font-weight: 100;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -73,6 +88,19 @@
     font-size: 14px;
     color: #666;
     margin-bottom: 5px;
+}
+
+.card-btn-buy {
+    all: unset;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    padding: 5px 2px 5px 2px;
+    border-radius: 4px;
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 600px) {
