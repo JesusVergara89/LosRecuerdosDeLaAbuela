@@ -1,18 +1,26 @@
+.Mapsingleprodcut {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card {
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
-    width: 300px;
-    height: 600px;
-    gap: 10px;
+    max-width: 320px; 
+    height: 540px; 
     padding: 0px 0px 15px 0px;
     position: relative;
 }
 
 .card-image {
-    height: 250px;
+    height: 250px; 
+    object-fit: contain; 
 }
 
 .card-discount-abs {
@@ -21,38 +29,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 168, 168);
+    background-color: rgb(255, 51, 20);
     position: absolute;
+    color: white;
 }
 
 .card-details-1 {
     width: 100%;
-    height: auto;
+    height: 30px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 15px;
+    padding: 8px;
 }
 
 .card-details-2 {
-    padding: 15px;
+    width: 100%;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-description {
+    width: 95;
+    height: 150px;
     font-size: 1rem;
     font-weight: 100;
     text-align: left;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 .card-price {
     width: auto;
-    height: auto;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    color: red;
+    color: rgb(255, 51, 20);
 }
 
 .strike-through {
@@ -79,30 +96,25 @@
     display: flex;
     justify-content: center;
     font-size: 0.8rem;
+    margin-top: 10px;
     padding: 5px;
 }
 
 .card-quantity {
-    font-size: 14px;
-    color: #666;
+    font-size: 1rem;
     margin-bottom: 5px;
 }
 
 .card-btn-buy {
     all: unset;
-    width: 100%;
-    height: auto;
+    width: 95%;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: coral;
+    background-color: var(--color4);
     padding: 5px 2px 5px 2px;
     border-radius: 4px;
     margin-top: 10px;
 }
 
-@media screen and (max-width: 600px) {
-    .card {
-        width: 100%;
-    }
-}
