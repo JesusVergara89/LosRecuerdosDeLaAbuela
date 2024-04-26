@@ -3,9 +3,12 @@ import '../styles/Home.css'
 import Allproducts from './Allproducts'
 
 const Home = () => {
+
+  let idProduct = null
+
   return (
     <div className="home">
-      <Allproducts />
+      <Allproducts idProduct={idProduct} />
     </div>
   )
 }

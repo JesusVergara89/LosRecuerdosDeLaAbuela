@@ -1,11 +1,18 @@
 import React from 'react'
 import '../styles/Mapsingleprodcut.css'
+import { Link } from 'react-router-dom'
 
-const Mapsingleprodcut = ({ product }) => {
+const Mapsingleprodcut = ({ product, stopLooping }) => {
     return (
         <div className='Mapsingleprodcut'>
             <div className="card">
-                <img className="card-image" src={product.image} alt="Robot Image" />
+                {stopLooping === true ?
+                    <Link to={`singleproduct/${product.id}`}>
+                        <img className="card-image" src={product.image} alt="Robot Image" />
+                    </Link>
+                    :
+                    <img className="false" src={product.image} alt="Robot Image" />
+                }
                 <div className={product.discount_percentage > 0 ? "card-discount-abs" : ''}>{product.discount_percentage > 0 ? `- ${product.discount_percentage}%` : ' '}</div>
                 <div className="card-details-1">
                     <div className="card-likes">{`${product.likes.length} likes`}</div>
