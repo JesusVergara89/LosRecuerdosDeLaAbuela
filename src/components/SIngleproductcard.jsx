@@ -1,27 +1,12 @@
 import React from 'react'
-import '../styles/Mapsingleprodcut.css'
-import { Link  } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { setIdValue } from '../store/slices/product.slice'
+import '../styles/SIngleproductcard.css'
+import { Link } from 'react-router-dom'
 
-const Mapsingleprodcut = ({ product, stopPropagation }) => {
-
-    const dispatch = useDispatch()
-
-    const setIDValue = (value) => dispatch(setIdValue(value));
-    
+const SIngleproductcard = ({ product }) => {
     return (
         <div className='Mapsingleprodcut'>
             <div className="card">
-                {stopPropagation === true ?
-                    <Link to={`singleproduct/${product.id}`}>
-                        <img className="card-image" src={product.image} alt="Robot Image" />
-                    </Link>
-                    :
-
-                    <img onClick={() => { setIDValue(product.id) }} className="card-image" src={product.image} alt="Robot Image" />
-
-                }
+                <img className="card-image-SIngleproductcard" src={product.image} alt="Robot Image" />
                 <div className={product.discount_percentage > 0 ? "card-discount-abs" : ''}>{product.discount_percentage > 0 ? `- ${product.discount_percentage}%` : ' '}</div>
                 <div className="card-details-1">
                     <div className="card-likes">{`${product.likes.length} likes`}</div>
@@ -52,4 +37,4 @@ const Mapsingleprodcut = ({ product, stopPropagation }) => {
     )
 }
 
-export default Mapsingleprodcut
+export default SIngleproductcard

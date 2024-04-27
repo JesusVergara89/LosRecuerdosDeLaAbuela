@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom'
 import '../styles/Singleproduct.css'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebaseConfig'
-import Mapsingleprodcut from './Mapsingleprodcut'
 import Allproducts from './Allproducts'
+import SIngleproductcard from './SIngleproductcard'
+import { useSelector } from 'react-redux'
 
 const Singleproduct = () => {
 
@@ -12,24 +13,35 @@ const Singleproduct = () => {
 
     const [product, setProduct] = useState(null)
 
-    useEffect(() => {
-        const documentREF = doc(db, "Products", id)
-        onSnapshot(documentREF, (snapshot) => {
-            setProduct({ ...snapshot.data(), id: snapshot.id })
-        })
-    }, [])
+    const productID = useSelector(state => state.product)
 
-    let stopLooping = false
+    useEffect(() => {
+        if (productID !== '') {
+            const documentREF = doc(db, "Products", productID)
+            onSnapshot(documentREF, (snapshot) => {
+                setProduct({ ...snapshot.data(), id: snapshot.id })
+            })
+        } else {
+            const documentREF = doc(db, "Products", id)
+            onSnapshot(documentREF, (snapshot) => {
+                setProduct({ ...snapshot.data(), id: snapshot.id })
+            })
+        }
+    }, [productID])
+
+
+    let stopPropagation = false
+
 
     return (
         <>
             {id && product && <div className='Singleproduct'>
 
-                <Mapsingleprodcut product={product} stopLooping={stopLooping} />
+                <SIngleproductcard product={product} />
 
                 <h2>Productos que también te puden interesar</h2>
 
-                <Allproducts idProduct={id} />
+                <Allproducts idProduct={productID === '' ? id : productID} stopPropagation={stopPropagation} />
 
             </div>}
         </>

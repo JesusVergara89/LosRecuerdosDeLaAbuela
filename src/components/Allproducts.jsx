@@ -3,11 +3,14 @@ import Mapsingleprodcut from './Mapsingleprodcut'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseConfig'
 import '../styles/Allproducts.css'
+import { useSelector } from 'react-redux'
 
-const Allproducts = ({ idProduct }) => {
+const Allproducts = ({ idProduct, stopPropagation }) => {
 
     const [products, setProducts] = useState([])
     const [itemp, setItemp] = useState([])
+
+    const productID = useSelector(state => state.product)
 
     useEffect(() => {
         const productREF = collection(db, 'Products')
@@ -19,7 +22,7 @@ const Allproducts = ({ idProduct }) => {
             }))
             setProducts(Products)
         })
-    }, [])
+    }, [productID])
 
     useEffect(() => {
         if (idProduct !== null && products.length > 0) {
@@ -28,14 +31,14 @@ const Allproducts = ({ idProduct }) => {
         } else {
             setItemp(products)
         }
-    }, [idProduct, products])
+    }, [idProduct, products,productID])
 
-    let stopLooping = true
+
 
     return (
         <div className='Allproducts'>
             {itemp && itemp.map((product, i) => (
-                <Mapsingleprodcut product={product} stopLooping={stopLooping} key={i} />
+                <Mapsingleprodcut product={product} stopPropagation={stopPropagation} key={i} />
             ))}
         </div>
     )
