@@ -1,20 +1,80 @@
-:root {
-    --color1: #B5C0D0;
-    --color2: #CCD3CA;
-    --color3: #F5E8DD;
-    --color4: #EED3D9
-}
-
 .home {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-top: 150px;
-    gap: 40px;
+    gap: 20px;
 }
 
+.home-images {
+    position: relative;
+    width: 80%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
 
+.home-images-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+}
 
+.buttons-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+}
+
+.prev-button {
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    position: absolute;
+    top: calc(50% - 12.5px);
+    left: 10px;
+    cursor: pointer;
+}
+
+.next-button {
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    position: absolute;
+    top: calc(50% - 12.5px);
+    right: 10px;
+    cursor: pointer;
+}
+
+.prev-button {
+    margin-right: auto;
+}
+
+.next-button {
+    margin-left: auto;
+}
+
+.home-images-item {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+@media(width < 600px) {
+    .home-images {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        background-color: aqua;
+        margin-bottom: 40px;
+    }
+}
