@@ -5,7 +5,7 @@ import { db } from '../firebaseConfig'
 import '../styles/Allproducts.css'
 import { useSelector } from 'react-redux'
 
-const Allproducts = ({ idProduct, stopPropagation }) => {
+const Allproducts = ({ idProduct }) => {
 
     const [products, setProducts] = useState([])
     const [itemp, setItemp] = useState([])
@@ -38,7 +38,7 @@ const Allproducts = ({ idProduct, stopPropagation }) => {
     return (
         <div className='Allproducts'>
             {itemp && itemp.map((product, i) => (
-                <Mapsingleprodcut product={product} stopPropagation={stopPropagation} key={i} />
+                <Mapsingleprodcut product={product} key={i} />
             ))}
         </div>
     )

@@ -1,8 +1,20 @@
+:root {
+    --color1: #B5C0D0;
+    --color2: #CCD3CA;
+    --color3: #F5E8DD;
+    --color4: #EED3D9
+}
+
 .home {
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 150px;
+    gap: 40px;
 }
+
+
+

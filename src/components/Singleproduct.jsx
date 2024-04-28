@@ -39,7 +39,7 @@ const Singleproduct = () => {
 
                 <SIngleproductcard product={product} />
 
-                <h2>Productos que también te puden interesar</h2>
+                <h2 className='Singleproduct-interesting-products'>Productos que también te puden interesar: </h2>
 
                 <Allproducts idProduct={productID === '' ? id : productID} stopPropagation={stopPropagation} />
 

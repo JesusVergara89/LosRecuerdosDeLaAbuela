@@ -5,11 +5,10 @@ import Allproducts from './Allproducts'
 const Home = () => {
 
   let idProduct = null
-  let stopPropagation = true
 
   return (
     <div className="home">
-      <Allproducts idProduct={idProduct} stopPropagation={stopPropagation}/>
+      <Allproducts idProduct={idProduct} />
     </div>
   )
 }

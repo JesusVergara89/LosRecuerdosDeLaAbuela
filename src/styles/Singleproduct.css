@@ -8,3 +8,13 @@
     gap: 40px;
     margin-top: 150px;
 }
+
+.Singleproduct-interesting-products {
+    all: unset;
+    width: 95%;
+    height: aunto;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

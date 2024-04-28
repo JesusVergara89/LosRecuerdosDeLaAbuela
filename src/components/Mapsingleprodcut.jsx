@@ -1,10 +1,10 @@
 import React from 'react'
 import '../styles/Mapsingleprodcut.css'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setIdValue } from '../store/slices/product.slice'
 
-const Mapsingleprodcut = ({ product, stopPropagation }) => {
+const Mapsingleprodcut = ({ product }) => {
 
     const dispatch = useDispatch()
 
