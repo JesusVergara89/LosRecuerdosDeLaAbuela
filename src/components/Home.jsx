@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Home.css';
 import Allproducts from './Allproducts';
+import Footer from './Footer';
 
 const Home = () => {
   const totalItems = 4;
@@ -48,6 +49,8 @@ const Home = () => {
         <button className="next-button" onClick={handleNext}> <i className='bx bxs-right-arrow'></i> </button>
       </div>
       <Allproducts idProduct={idProduct} />
+
+      <Footer/>
     </div>
   );
 };
