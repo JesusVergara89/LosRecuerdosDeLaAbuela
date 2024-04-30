@@ -52,6 +52,9 @@ const Home = () => {
         <button className="prev-button" onClick={handlePrev}> <i className='bx bxs-left-arrow' ></i> </button>
         <button className="next-button" onClick={handleNext}> <i className='bx bxs-right-arrow'></i> </button>
       </div>
+
+      
+
       <Allproducts idProduct={idProduct} />
 
       <Footer />
