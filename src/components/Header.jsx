@@ -40,7 +40,7 @@ const Header = () => {
         <ul className="custom-list">
           <li><Link to="/ropa">Ropa</Link></li>
           <li><Link to="/juguetes">Juguetes</Link></li>
-          <li><Link to="/login">Login</Link></li>
+          <li onClick={updatedMenu}><Link to="/login">Login</Link></li>
         </ul>
       </div>
 
