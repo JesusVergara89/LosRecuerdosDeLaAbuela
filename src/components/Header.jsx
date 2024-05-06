@@ -38,8 +38,9 @@ const Header = () => {
 
       <div className={menu_class}>
         <ul className="custom-list">
-          <li><Link to="/ropa">Ropa</Link></li>
-          <li><Link to="/juguetes">Juguetes</Link></li>
+          <li onClick={updatedMenu}><Link to="/">Home</Link></li>
+          <li onClick={updatedMenu}><Link to="/ropa">Ropa</Link></li>
+          <li onClick={updatedMenu}><Link to="/juguetes">Juguetes</Link></li>
           <li onClick={updatedMenu}><Link to="/login">Login</Link></li>
         </ul>
       </div>
