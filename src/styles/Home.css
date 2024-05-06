@@ -86,19 +86,27 @@
 }
 
 .home-pointers .bx.bxs-circle {
-     font-size: 1.5rem;
+     font-size: 1.3rem;
      color: black;
 }
 
 .home-pointers .bx.bxs-circle.big {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: rgb(0, 193, 148);
 }
 
 @media(width < 760px) {
     .home-images-item img {
-        height: 160%;
+        height: 150%;
         object-fit: cover;
+    }
+
+    .prev-button {
+        display: none;
+    }
+
+    .next-button {
+        display: none;
     }
 }
 
@@ -120,22 +128,10 @@
     }
 
     .prev-button {
-        background: transparent;
-        border: none;
-        font-size: 25px;
-        position: absolute;
-        top: calc(50% - 12.5px);
-        left: 0px;
-        cursor: pointer;
+        display: none;
     }
 
     .next-button {
-        background: transparent;
-        border: none;
-        font-size: 25px;
-        position: absolute;
-        top: calc(50% - 12.5px);
-        right: 0px;
-        cursor: pointer;
+        display: none;
     }
 }

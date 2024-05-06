@@ -3,6 +3,7 @@ import Home from "./components/Home"
 import Protectedroutes from "./components/Protectedroutes"
 import Header from "./components/Header"
 import Singleproduct from "./components/Singleproduct"
+import Login from "./auth/Login"
 
 
 function Abuela() {
@@ -24,7 +25,13 @@ function Abuela() {
 
         <Route path='/singleproduct/:id'
           element={
-            <Singleproduct/>
+            <Singleproduct />
+          }
+        />
+
+        <Route path='/login'
+          element={
+            <Login />
           }
         />
 
