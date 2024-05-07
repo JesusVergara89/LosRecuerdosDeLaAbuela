@@ -66,6 +66,22 @@
     background-color: #0056b3;
 }
 
+.login-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+}
+
+.login-register a {
+    font-size: 1.2rem;
+    columns: blue;
+    text-align: center;
+    font-weight: 600;
+}
+
 @media (max-width: 500px) {
     .container-login {
         width: 85%;

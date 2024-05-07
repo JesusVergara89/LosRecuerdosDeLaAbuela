@@ -4,6 +4,7 @@ import Protectedroutes from "./components/Protectedroutes"
 import Header from "./components/Header"
 import Singleproduct from "./components/Singleproduct"
 import Login from "./auth/Login"
+import Register from "./auth/Register"
 
 
 function Abuela() {
@@ -32,6 +33,12 @@ function Abuela() {
         <Route path='/login'
           element={
             <Login />
+          }
+        />
+
+        <Route path='/register'
+          element={
+            <Register />
           }
         />
 

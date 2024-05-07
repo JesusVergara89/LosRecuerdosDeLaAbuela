@@ -42,6 +42,7 @@ const Header = () => {
           <li onClick={updatedMenu}><Link to="/ropa">Ropa</Link></li>
           <li onClick={updatedMenu}><Link to="/juguetes">Juguetes</Link></li>
           <li onClick={updatedMenu}><Link to="/login">Login</Link></li>
+          <li onClick={updatedMenu}><Link to="/register">Registrase</Link></li>
         </ul>
       </div>
 
