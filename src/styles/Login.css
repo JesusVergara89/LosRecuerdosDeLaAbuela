@@ -1,4 +1,4 @@
-.Login {
+.login {
     width: 100%;
     height: auto;
     display: flex;
@@ -11,6 +11,10 @@
     width: 400px;
     height: auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,7 +44,7 @@
 }
 
 .form-group input {
-    width: 100%;
+    width: 390px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -60,4 +64,23 @@
 
 .btn:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 500px) {
+    .container-login {
+        width: 85%;
+        height: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 150px;
+    }
+
+    .form-group input {
+        width: 290px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 }
