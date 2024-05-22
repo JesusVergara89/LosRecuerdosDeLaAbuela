@@ -24,8 +24,6 @@ const Header = () => {
     setIsMenuClickked(!isMenuClickked)
   }
 
-  console.log(thisUser)
-
   return (
     <header>
 
