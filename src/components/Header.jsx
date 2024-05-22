@@ -8,6 +8,7 @@ import { signOut } from 'firebase/auth';
 
 const Header = () => {
 
+  const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
   const [burger_class, setBurger_class] = useState('burger-bar unclicked')
   const [menu_class, setMenu_class] = useState('menu hidden')
   const [isMenuClickked, setIsMenuClickked] = useState(false)
@@ -24,13 +25,15 @@ const Header = () => {
     setIsMenuClickked(!isMenuClickked)
   }
 
+  //console.log(thisUser)
+
   return (
     <header>
 
       {
         thisUser &&
         <div className="header-user-login">
-          <h4>{thisUser.displayName !== null ? `Welcome ${thisUser.displayName}` : `Welcome ${thisUser.email}`}</h4>
+          <h4>{thisUser.displayName === null ? `Welcome ${thisUser.email}` : `Welcome ${thisUser.displayName}`}</h4>
           <button onClick={() => { signOut(auth) }}>Salir</button>
         </div>
       }
@@ -56,8 +59,11 @@ const Header = () => {
           <li onClick={updatedMenu}><Link to="/juguetes">Juguetes</Link></li>
           <li onClick={updatedMenu}><Link to="/login">Login</Link></li>
           <li onClick={updatedMenu}><Link to="/register">Registrase</Link></li>
-          {thisUser && thisUser.uid === 'yHvPIlse3phSuY2Lf8IwaLOdCe72' ? (
+          {thisUser && thisUser.uid === adminUID ? (
             <li onClick={updatedMenu}><Link to="/create">New product</Link></li>
+          ) : null}
+           {thisUser && thisUser.uid === adminUID ? (
+            <li onClick={updatedMenu}><Link to="/edit">Edit product</Link></li>
           ) : null}
         </ul>
       </div>

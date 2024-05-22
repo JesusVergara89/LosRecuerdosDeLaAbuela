@@ -98,3 +98,18 @@
 .product-selection  p {
     all: unset;
 }
+
+.Dont-allow {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 180px;
+    margin-bottom: 100px;
+}
+
+.Dont-allow p {
+    all: unset;
+    text-align: center;
+    font-size: 0.9rem;
+}

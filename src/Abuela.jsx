@@ -7,6 +7,7 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import Carrito from "./components/Carrito"
 import Createdproduct from "./Createdproducts/Createdproduct"
+import Editproducts from "./Createdproducts/Editproducts"
 
 
 function Abuela() {
@@ -53,6 +54,11 @@ function Abuela() {
           <Route path='/create'
             element={
               <Createdproduct/>
+            }
+          />
+           <Route path='/edit'
+            element={
+              <Editproducts/>
             }
           />
         </Route>
