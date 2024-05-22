@@ -5,6 +5,7 @@ import Header from "./components/Header"
 import Singleproduct from "./components/Singleproduct"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+import Carrito from "./components/Carrito"
 
 
 function Abuela() {
@@ -43,9 +44,9 @@ function Abuela() {
         />
 
         <Route element={<Protectedroutes />}>
-          <Route path='/profile'
+          <Route path='/carrito'
             element={
-              <div>This will be protected</div>
+              <Carrito/>
             }
           />
         </Route>

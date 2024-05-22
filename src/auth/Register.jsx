@@ -1,44 +1,75 @@
-import React, { useState } from 'react'
-import '../styles/Register.css'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import '../styles/Register.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [show, setShow] = useState(false);
 
-  const [show, setShow] = useState(false)
+  const navigate = useNavigate();
 
+  const registerFunct = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+      navigate('/login');
+    } catch (error) {
+      toast(error.message, { type: 'error' });
+    }
+  };
 
+  const toggleShowPassword = () => {
+    setShow(!show);
+  };
 
-  const showPass = () => {
-    setShow(!show)
-  }
   return (
     <div className="register">
       <div className="container-register">
         <h2>Registro</h2>
-        <form>
+        <form onSubmit={registerFunct}>
           <div className="form-group">
             <label htmlFor="name">Nombre:</label>
-            <input type="text" id="name" name="name" required />
+            <input
+              type="text"
+              name="name"
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="email">Correo electrónico:</label>
-            <input type="email" id="email" name="email" required />
+            <input
+              type="email"
+              name="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="password">Contraseña:</label>
-            <input type={show === false ? "password" : "text"} id="password" name="password" required />
-            <i onClick={showPass} className={`bx  ${show === false ? 'bxs-show' : 'bxs-hide'}`}></i>
+            <input
+              type={show ? "text" : "password"}
+              name="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <i onClick={toggleShowPassword} className={`bx ${show ? 'bxs-hide' : 'bxs-show'}`}></i>
           </div>
-          <button type="submit" className="btn">Registrarse</button>
+          <button className="btn" type="submit">Registrarse</button>
         </form>
       </div>
       <div className="register-login">
-                <Link to='/login'>¿Ya tienes cuenta? - Accede</Link>
-            </div>
+        <Link to='/login'>¿Ya tienes cuenta? - Accede</Link>
+      </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Register
+export default Register;

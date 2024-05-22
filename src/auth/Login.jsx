@@ -3,12 +3,11 @@ import '../styles/Login.css';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-
+    
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const [show, setShow] = useState(false)
-
-
-
     const showPass = () => {
         setShow(!show)
     }
