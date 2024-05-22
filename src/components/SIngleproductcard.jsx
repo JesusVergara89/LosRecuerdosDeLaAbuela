@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/SIngleproductcard.css'
-import { Link } from 'react-router-dom'
 
 const SIngleproductcard = ({ product }) => {
     return (

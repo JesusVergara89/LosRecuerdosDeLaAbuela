@@ -56,8 +56,12 @@ const Header = () => {
           <li onClick={updatedMenu}><Link to="/juguetes">Juguetes</Link></li>
           <li onClick={updatedMenu}><Link to="/login">Login</Link></li>
           <li onClick={updatedMenu}><Link to="/register">Registrase</Link></li>
+          {thisUser && thisUser.uid === 'yHvPIlse3phSuY2Lf8IwaLOdCe72' ? (
+            <li onClick={updatedMenu}><Link to="/create">New product</Link></li>
+          ) : null}
         </ul>
       </div>
+
 
 
     </header>

@@ -1,0 +1,100 @@
+.createdproduct {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 180px;
+    margin-bottom: 100px;
+}
+
+.createdproduct-add-product {
+    width: 280px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 8px 10px 8px;
+    border-radius: 5px;
+    background-color: rgb(234, 234, 250);
+}
+
+
+.createdproduct-add-product select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+
+.createdproduct-add-product .description {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.createdproduct-add-product input[type="text"],
+.createdproduct-add-product input[type="file"] {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.createdproduct-add-product .create {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.createdproduct-add-product .create:hover {
+    background-color: #218838;
+}
+
+.progress {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+}
+
+.product-selection {
+    width: 200px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(250, 164, 164);
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px 3px 10px 3px;
+}
+
+.product-selection  p {
+    all: unset;
+}

@@ -6,30 +6,30 @@ import { auth } from '../firebaseConfig';
 import { toast } from 'react-toastify';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const navigate = useNavigate()
-
-    const handlelogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
             navigate('/');
         } catch (error) {
             toast(error.message, { type: 'error' });
         }
-    }
+    };
 
-    const [show, setShow] = useState(false)
     const showPass = () => {
-        setShow(!show)
-    }
+        setShow(!show);
+    };
 
     return (
         <div className="login">
             <div className="container-login">
                 <h2>Iniciar sesión</h2>
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="form-group">
                         <label htmlFor="email">Correo electrónico:</label>
                         <input
@@ -37,29 +37,25 @@ const Login = () => {
                             id="email"
                             name="email"
                             required
-                            onChange={(e) => {
-                                setEmail(e.target.value)
-                            }}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Contraseña:</label>
                         <input
-                            type={show === false ? "password" : "text"}
+                            type={show ? "text" : "password"}
                             id="password"
                             name="password"
                             required
-                            onChange={(e) => {
-                                setPassword(e.target.value)
-                            }}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
-                        <i onClick={showPass} className={`bx  ${show === false ? 'bxs-show' : 'bxs-hide'}`}></i>
+                        <i onClick={showPass} className={`bx ${show ? 'bxs-hide' : 'bxs-show'}`}></i>
                     </div>
-                    <button onClick={handlelogin} className="btn">Iniciar sesión</button>
+                    <button className="btn">Iniciar sesión</button>
                 </form>
             </div>
             <div className="login-register">
-                <Link to='/register'>¿No tienes cuenta? - Registrate</Link>
+                <Link to='/register'>¿No tienes cuenta? - Regístrate</Link>
             </div>
         </div>
     );

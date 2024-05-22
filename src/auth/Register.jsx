@@ -19,7 +19,7 @@ const Register = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      navigate('/login');
+      navigate('/login'); 
     } catch (error) {
       toast(error.message, { type: 'error' });
     }
