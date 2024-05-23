@@ -74,8 +74,6 @@
     cursor: pointer;
     text-decoration: none !important;
 }
-
-
     
 @media( width < 400px){
     .custom-list li a {
