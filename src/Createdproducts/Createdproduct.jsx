@@ -5,6 +5,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { auth, db, storage } from '../firebaseConfig';
 import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import useProducts from '../hooks/useProducts';
 
 const Createdproduct = () => {
     const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
@@ -22,7 +23,7 @@ const Createdproduct = () => {
         quantity: ''
     });
 
-    const categories = ['ropa', 'juguetes', 'muebles'];
+   const { categories } = useProducts()
 
     const handleChange = (event) => {
         const category = event.target.value;

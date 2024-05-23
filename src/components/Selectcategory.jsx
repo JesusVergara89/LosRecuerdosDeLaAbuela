@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../styles/Selectcategory.css'
+import useProducts from '../hooks/useProducts';
 
 const Selectcategory = () => {
     const [select, setSelect] = useState('');
     const navigate = useNavigate()
-    const categories = ['ropa', 'juguetes', 'muebles'];
+    const { categories } = useProducts()
     const handleChange = (event) => {
         const category = event.target.value;
         setSelect(category);
         navigate(`/categorycomponent/${category}`)
         setSelect('');
     };
-    
+
     return (
         <select className='Selectcategory' value={select} onChange={handleChange}>
             <option value="" disabled>Selecciona una categoría</option>
