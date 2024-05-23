@@ -8,6 +8,7 @@ import Register from "./auth/Register"
 import Carrito from "./components/Carrito"
 import Createdproduct from "./Createdproducts/Createdproduct"
 import Editproducts from "./Createdproducts/Editproducts"
+import Categorycomponent from "./components/Categorycomponent"
 
 
 function Abuela() {
@@ -45,20 +46,26 @@ function Abuela() {
           }
         />
 
+        <Route path='/categorycomponent/:section'
+          element={
+            <Categorycomponent />
+          }
+        />
+
         <Route element={<Protectedroutes />}>
           <Route path='/carrito'
             element={
-              <Carrito/>
+              <Carrito />
             }
           />
           <Route path='/create'
             element={
-              <Createdproduct/>
+              <Createdproduct />
             }
           />
-           <Route path='/edit'
+          <Route path='/edit'
             element={
-              <Editproducts/>
+              <Editproducts />
             }
           />
         </Route>
