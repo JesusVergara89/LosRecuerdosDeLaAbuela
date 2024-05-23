@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Menu.css'
 
-const Menu = ({burger_class,updatedMenu,thisUser,adminUID,menu_class}) => {
+const Menu = ({ burger_class, updatedMenu, thisUser, adminUID, menu_class }) => {
     return (
         <>
             <div className="burger-menu" onClick={updatedMenu}>
