@@ -3,6 +3,7 @@ import './Editproducts.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebaseConfig';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import CardEdit from './CardEdit';
 
 const Editproducts = () => {
 
@@ -22,13 +23,15 @@ const Editproducts = () => {
             setProducts(Products)
         })
     }, [])
-
-    console.log(products)
     
     return (
-        logUser && logUser.uid === adminUID  ? (
+        logUser && products && logUser.uid === adminUID  ? (
             <div className="Editproducts">
-                 this is edit products
+                {
+                    products.map((product, i) => (
+                            <CardEdit key={i} product={product} />        
+                    ))
+                }
             </div>
         ) : (
             <p className='Dont-allow'>No tienes permiso para editar productos.</p>
