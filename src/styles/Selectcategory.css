@@ -1,6 +1,15 @@
 .Selectcategory{
-    width: 80%;
+    width: 50%;
     border: none;
     border-radius: 5px;
     padding: 3px;
+}
+
+@media (width < 400px){
+    .Selectcategory{
+        width: 80%;
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+    }
 }
