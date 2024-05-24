@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Mapsingleprodcut.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setIdValue } from '../store/slices/product.slice'
 import Card from './Card'

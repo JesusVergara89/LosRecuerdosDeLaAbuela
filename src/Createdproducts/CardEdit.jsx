@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Edit from './Edit'
+import Delete from './Delete'
 
 const CardEdit = ({ product }) => {
 
@@ -38,7 +39,7 @@ const CardEdit = ({ product }) => {
                 <div className="card-created">{product.createdAt.toDate().toDateString()}</div>
                 <div className="card-edit-delete">
                     <i onClick={functionEditOrDelete} className='bx bx-edit-alt'></i>
-                    <i className='bx bx-trash' ></i>
+                    <Delete product={product}/>
                 </div>
             </div>
         ) : (
