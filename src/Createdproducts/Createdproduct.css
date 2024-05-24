@@ -24,6 +24,7 @@
 
 
 .createdproduct-add-product select {
+    width: 90%;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -84,7 +85,7 @@
 }
 
 .product-selection {
-    width: 400px;
+    width: 280px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -127,8 +128,3 @@
     font-size: 0.9rem;
 }
 
-@media(width < 400px){
-    .product-selection {
-        width: 90%;
-    }
-}
