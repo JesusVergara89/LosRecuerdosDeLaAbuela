@@ -7,12 +7,16 @@ import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useProducts from '../hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
+import useColors from '../hooks/useColors';
+import useSizes from '../hooks/useSizes';
 
 const Createdproduct = () => {
     const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [logUser] = useAuthState(auth);
     const [select, setSelect] = useState('');
+    const [selectcolors, setSelectcolors] = useState([]);
+    const [selectsizes, setSelectsizes] = useState([]);
     const [progress, setProgress] = useState(0);
     const [formData, setFormData] = useState({
         Category: '',
@@ -22,15 +26,37 @@ const Createdproduct = () => {
         image: '',
         likes: [],
         price: '',
-        quantity: ''
+        quantity: '',
+        colors: [],
+        sizes: []
     });
 
-    const { categories } = useProducts()
+    const { categories } = useProducts();
+    const { colors } = useColors();
+    const { sizes } = useSizes();
 
     const handleChange = (event) => {
         const category = event.target.value;
         setSelect(category);
         setFormData({ ...formData, Category: category });
+    };
+
+    const handleChangeColor = (event) => {
+        const color = event.target.value;
+        setSelectcolors([...selectcolors, color]);
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            colors: [...prevFormData.colors, color]
+        }));
+    };
+
+    const handleChangeSize = (event) => {
+        const size = event.target.value;
+        setSelectsizes([...selectsizes, size]);
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            sizes: [...prevFormData.sizes, size]
+        }));
     };
 
     const handleChange1 = (e) => {
@@ -64,7 +90,9 @@ const Createdproduct = () => {
                     image: '',
                     likes: [],
                     price: '',
-                    quantity: ''
+                    quantity: '',
+                    colors: [],
+                    sizes: []
                 });
                 getDownloadURL(uploadImage.snapshot.ref)
                     .then((url) => {
@@ -77,12 +105,14 @@ const Createdproduct = () => {
                             image: url,
                             likes: formData.likes,
                             price: formData.price,
-                            quantity: formData.quantity
+                            quantity: formData.quantity,
+                            colors: formData.colors,
+                            sizes: formData.sizes
                         })
                             .then(() => {
                                 toast("Producto agregado correctamente", { type: "success" });
                                 setProgress(0);
-                                navigate('/')
+                                navigate('/');
                             })
                             .catch(e => {
                                 toast("Error agregando el producto", { type: "error" });
@@ -90,7 +120,7 @@ const Createdproduct = () => {
                     });
             }
         );
-    }
+    };
 
     return (
         logUser && logUser.uid === adminUID ? (
@@ -101,6 +131,22 @@ const Createdproduct = () => {
                         {categories.map((category) => (
                             <option key={category} value={category}>
                                 {category.charAt(0).toUpperCase() + category.slice(1)}
+                            </option>
+                        ))}
+                    </select>
+                    <select value="" onChange={handleChangeColor}>
+                        <option value="" disabled>Selecciona un color</option>
+                        {colors.map((color) => (
+                            <option key={color} value={color}>
+                                {color.charAt(0).toUpperCase() + color.slice(1)}
+                            </option>
+                        ))}
+                    </select>
+                    <select value="" onChange={handleChangeSize}>
+                        <option value="" disabled>Selecciona una talla</option>
+                        {sizes.map((size) => (
+                            <option key={size} value={size}>
+                                {size.charAt(0).toUpperCase() + size.slice(1)}
                             </option>
                         ))}
                     </select>
@@ -158,6 +204,8 @@ const Createdproduct = () => {
                 </div>
                 <div className="product-selection">
                     <p>Seleccionaste: {select}</p>
+                    <div className='product-selection-colors'>Colores seleccionados: {selectcolors.join(', ')}</div>
+                    <div className='product-selection-size'>Tallas seleccionadas: {selectsizes.join(', ')}</div>
                 </div>
             </div>
         ) : (
