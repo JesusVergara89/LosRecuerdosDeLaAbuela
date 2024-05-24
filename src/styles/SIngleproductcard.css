@@ -2,6 +2,7 @@
     width: auto;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
@@ -125,4 +126,214 @@
     border-radius: 4px;
     margin-top: 10px;
 }
+
+.card-description-all-details {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 70px;
+}
+
+.card-description-all-details label{
+    font-weight: bold;
+    text-align: start;
+    font-size: 1.1rem;
+}
+
+.card-description-details {
+    width: 90%;
+    height: auto;
+    text-align: justify;
+    color: rgb(90, 90, 90);
+}
+
+.card-description-colors,
+.card-description-sizes {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 10px;
+}
+
+.verde {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #008000;
+    color: white;
+    font-weight: bold;
+}
+
+.rojo {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FF0000;
+    color: white;
+    font-weight: bold;
+}
+
+.azul {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #0000FF;
+    color: white;
+    font-weight: bold;
+}
+
+.amarillo {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FFFF00;
+    color: black;
+    font-weight: bold;
+}
+
+.naranja {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FFA500;
+    color: white;
+    font-weight: bold;
+}
+
+.morado {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #800080;
+    color: white;
+    font-weight: bold;
+}
+
+.rosa {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FFC0CB;
+    color: black;
+    font-weight: bold;
+}
+
+.negro {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+}
+
+.blanco {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: black;
+    font-weight: bold;
+}
+
+.gris {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #808080;
+    color: white;
+    font-weight: bold;
+}
+
+.marron {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #A52A2A;
+    color: white;
+    font-weight: bold;
+}
+
+.cian {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #00FFFF;
+    color: black;
+    font-weight: bold;
+}
+
+.magenta {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FF00FF;
+    color: white;
+    font-weight: bold;
+}
+
+.lima {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #00FF00;
+    color: black;
+    font-weight: bold;
+}
+
+.oliva {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #808000;
+    color: white;
+    font-weight: bold;
+}
+
+.plata {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #C0C0C0;
+    color: black;
+    font-weight: bold;
+}
+
+.teal {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #008080;
+    color: white;
+    font-weight: bold;
+}
+
+.agua {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #00FFFF;
+    color: black;
+    font-weight: bold;
+}
+
+.fucsia {
+    all: unset;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background-color: #FF00FF;
+    color: white;
+    font-weight: bold;
+}
+
+
+
 

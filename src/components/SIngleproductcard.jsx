@@ -31,7 +31,24 @@ const SIngleproductcard = ({ product }) => {
                 </div>
                 <div className="card-created">{product.createdAt.toDate().toDateString()}</div>
             </div>
-
+            <div className="card-description-all-details">
+                <label>Descripción</label>
+                <div className="card-description-details">
+                    {product.description}
+                </div>
+                <label>{`${product.colors.length === 0 ? '' : 'Colores disponibles'}`}</label>
+                <div className="card-description-colors">
+                    {product.colors.map((data,i) => (
+                        <p className={data.toLowerCase()} key={i}>{data.toLowerCase()}</p>
+                    ))}
+                </div>
+                <label>{`${product.sizes.length === 0 ? '' : 'Tallas disponibles'}`}</label>
+                <div className="card-description-sizes">
+                    {product.sizes.map((data,i)=> (
+                        <p key={i}>{data.toLowerCase()}</p>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }
