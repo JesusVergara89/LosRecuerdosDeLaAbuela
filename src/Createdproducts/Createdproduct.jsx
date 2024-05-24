@@ -43,20 +43,28 @@ const Createdproduct = () => {
 
     const handleChangeColor = (event) => {
         const color = event.target.value;
-        setSelectcolors([...selectcolors, color]);
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            colors: [...prevFormData.colors, color]
-        }));
+        if (selectcolors.includes(color)) {
+            toast('Ese color ya esta fue seleccionado, escoge otro', { type: "error" })
+        } else {
+            setSelectcolors([...selectcolors, color]);
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                colors: [...prevFormData.colors, color]
+            }));
+        }
     };
 
     const handleChangeSize = (event) => {
         const size = event.target.value;
-        setSelectsizes([...selectsizes, size]);
+        if(selectsizes.includes(size)){
+            toast('Esa talla ya esta fue seleccionada, escoge otra', { type: "error" }) 
+        }else{
+          setSelectsizes([...selectsizes, size]);
         setFormData(prevFormData => ({
             ...prevFormData,
             sizes: [...prevFormData.sizes, size]
-        }));
+        }));  
+        }        
     };
 
     const handleChange1 = (e) => {

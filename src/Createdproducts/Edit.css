@@ -28,3 +28,13 @@
     align-items: center;
     gap: 10px;
 }
+
+.edit-current-data-colors {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
