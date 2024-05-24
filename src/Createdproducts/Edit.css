@@ -18,3 +18,13 @@
     background-color: rgb(186, 186, 255);
     color: rgb(53, 53, 53);
 }
+
+.edit-current-data{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

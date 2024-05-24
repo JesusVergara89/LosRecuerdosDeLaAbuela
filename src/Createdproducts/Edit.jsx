@@ -4,12 +4,18 @@ import { Timestamp, doc, updateDoc } from 'firebase/firestore';
 import useProducts from '../hooks/useProducts';
 import { db } from '../firebaseConfig';
 import { toast } from 'react-toastify';
+import useColors from '../hooks/useColors';
+import useSizes from '../hooks/useSizes';
 
 const Edit = ({ product, functionEditOrDelete }) => {
 
     const { categories } = useProducts();
+    const { colors } = useColors();
+    const { sizes } = useSizes();
 
     const [select, setSelect] = useState(product.Category);
+    const [selectcolors, setSelectcolors] = useState([]);
+    const [selectsizes, setSelectsizes] = useState([]);
     const [formData, setFormData] = useState({
         Category: product.Category || '',
         createdAt: Timestamp.now().toDate(),
@@ -18,11 +24,15 @@ const Edit = ({ product, functionEditOrDelete }) => {
         image: product.image || '',
         likes: product.likes || '',
         price: product.price || '',
-        quantity: product.quantity || ''
+        quantity: product.quantity || '',
+        colors: product.colors || '',
+        sizes: product.sizes || ''
     });
 
     useEffect(() => {
         setSelect(product.Category);
+        setSelectcolors(product.colors)
+        setSelectsizes(product.sizes)
         setFormData({
             Category: product.Category,
             createdAt: Timestamp.now().toDate(),
@@ -31,7 +41,9 @@ const Edit = ({ product, functionEditOrDelete }) => {
             image: product.image,
             likes: product.likes,
             price: product.price,
-            quantity: product.quantity
+            quantity: product.quantity,
+            colors: product.colors,
+            sizes: product.sizes 
         });
     }, [product]);
 
@@ -40,6 +52,25 @@ const Edit = ({ product, functionEditOrDelete }) => {
         setSelect(category);
         setFormData({ ...formData, Category: category });
     };
+
+    const handleChangeColor = (event) => {
+        const color = event.target.value;
+        setSelectcolors([...selectcolors, color]);
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            colors: [...prevFormData.colors, color]
+        }));
+    };
+
+    const handleChangeSize = (event) => {
+        const size = event.target.value;
+        setSelectsizes([...selectsizes, size]);
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            sizes: [...prevFormData.sizes, size]
+        }));
+    };
+
 
     const handleChange1 = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,7 +92,9 @@ const Edit = ({ product, functionEditOrDelete }) => {
                 image: product.image,
                 likes: updatedData.likes,
                 price: updatedData.price,
-                quantity: updatedData.quantity
+                quantity: updatedData.quantity,
+                colors: updateData.colors,
+                sizes: updatedData.sizes
             };
             const docRef = doc(db, 'Products', product.id);
             await updateDoc(docRef, updateData);
@@ -74,7 +107,9 @@ const Edit = ({ product, functionEditOrDelete }) => {
                 image: '',
                 likes: '',
                 price: '',
-                quantity: ''
+                quantity: '',
+                colors: [],
+                sizes: []
             });
             functionEditOrDelete()
         }
@@ -94,6 +129,22 @@ const Edit = ({ product, functionEditOrDelete }) => {
                     {categories.map((category) => (
                         <option key={category} value={category}>
                             {category.charAt(0).toUpperCase() + category.slice(1)}
+                        </option>
+                    ))}
+                </select>
+                <select value="" onChange={handleChangeColor}>
+                    <option value="" disabled>Selecciona un color</option>
+                    {colors.map((color) => (
+                        <option key={color} value={color}>
+                            {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </option>
+                    ))}
+                </select>
+                <select value="" onChange={handleChangeSize}>
+                    <option value="" disabled>Selecciona una talla</option>
+                    {sizes.map((size) => (
+                        <option key={size} value={size}>
+                            {size.charAt(0).toUpperCase() + size.slice(1)}
                         </option>
                     ))}
                 </select>
@@ -132,6 +183,33 @@ const Edit = ({ product, functionEditOrDelete }) => {
                     value={formData.quantity}
                     onChange={handleChange1}
                 />
+
+                <div className="edit-current-data">
+                    <label>{`${product.colors.length === 0 ? '' : 'Colores:'}`}</label>
+                    {product.colors.length !== 0 ?
+                        <div className="edit-current-data-colors">
+                            {
+                                formData.colors.map((color, i) => (
+                                    <h5 className='edit-colors' key={i}>{color}</h5>
+                                ))
+                            }
+                        </div>
+                        :
+                        ''
+                    }
+                    <label>{`${product.colors.length === 0 ? '' : 'Sizes:'}`}</label>
+                    {product.sizes.length !== 0 ?
+                        <div className="edit-current-data-colors">
+                            {
+                                formData.sizes.map((size, i) => (
+                                    <h5 className='edit-colors' key={i}>{size}</h5>
+                                ))
+                            }
+                        </div>
+                        :
+                        ''
+                    }
+                </div>
                 <button onClick={handlePublish} className="create">Update product</button>
             </div>
         </div>
