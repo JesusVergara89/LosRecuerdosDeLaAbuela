@@ -23,7 +23,7 @@ const Createdproduct = () => {
         quantity: ''
     });
 
-   const { categories } = useProducts()
+    const { categories } = useProducts()
 
     const handleChange = (event) => {
         const category = event.target.value;
