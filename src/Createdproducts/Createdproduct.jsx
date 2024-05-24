@@ -6,9 +6,11 @@ import { auth, db, storage } from '../firebaseConfig';
 import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useProducts from '../hooks/useProducts';
+import { useNavigate } from 'react-router-dom';
 
 const Createdproduct = () => {
     const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
+    const navigate = useNavigate()
     const [logUser] = useAuthState(auth);
     const [select, setSelect] = useState('');
     const [progress, setProgress] = useState(0);
@@ -80,6 +82,7 @@ const Createdproduct = () => {
                             .then(() => {
                                 toast("Producto agregado correctamente", { type: "success" });
                                 setProgress(0);
+                                navigate('/')
                             })
                             .catch(e => {
                                 toast("Error agregando el producto", { type: "error" });
