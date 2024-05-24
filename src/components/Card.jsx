@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/Card.css'
 
 const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
+
     return (
         <div className="card">
             <img onClick={() => { setIDValue(product.id); handleScrollToTop(); handleClick() }} className="card-image" src={product.image} alt="Robot Image" />
@@ -28,7 +29,7 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
                     Comprar
                 </button>
             </div>
-            <div className="card-created">{product.createdAt.toDate().toDateString()}</div>
+           <div className="card-created">{typeof(product.createdAt) === 'number' ? new Date(product.createdAt).toLocaleString() : product.createdAt.toDate().toDateString()}</div>
         </div>
     )
 }
