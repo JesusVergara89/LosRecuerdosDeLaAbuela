@@ -1,5 +1,4 @@
-import React from 'react'
-import './Delete.css'
+import React from 'react' 
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db, storage } from '../firebaseConfig'
 import { deleteObject, ref } from 'firebase/storage'

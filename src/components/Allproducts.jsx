@@ -3,17 +3,21 @@ import Mapsingleprodcut from './Mapsingleprodcut'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseConfig'
 import '../styles/Allproducts.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Searchingproducts from './Searchingproducts'
+import { setAllproductsValue } from '../store/slices/allproducts.slice'
 
 const Allproducts = ({ idProduct }) => {
 
     const [products, setProducts] = useState([])
     const [itemp, setItemp] = useState([])
 
+    const dispatch = useDispatch()
+
+    const setAllproducts = (value) => dispatch(setAllproductsValue(value));
+
     const [filtro, setFiltro] = useState('');
     const [usuariosFiltrados, setUsuariosFiltrados] = useState([]);
-
 
     const productID = useSelector(state => state.product)
 
@@ -26,6 +30,10 @@ const Allproducts = ({ idProduct }) => {
                 ...doc.data()
             }))
             setProducts(Products)
+            setAllproducts(Products.map(product => ({
+                ...product,
+                createdAt: product.createdAt ? product.createdAt.seconds * 1000 + product.createdAt.nanoseconds / 1000000 : null,
+            })));
         })
     }, [productID])
 
