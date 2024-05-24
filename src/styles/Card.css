@@ -137,14 +137,19 @@
 /*For edit card*/
 
 .card-edit-delete{
-    width: 100%;
+    width: 100px;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
     position: absolute;
-    top: -35px;
+    top: 5px;
+    right: 5px;
+    background-color: rgb(159, 159, 250);
+    border: 0.1rem solid rgb(108, 108, 242);
+    border-radius: 8px;
+    padding: 5px 10px 5px 10px;
 }
 
 .card-edit-delete .bx {
@@ -152,9 +157,9 @@
      text-align: center;
      font-weight: bold;
      cursor: pointer;
+     color: rgb(54, 54, 54);
 }
 
-
 .card-edit-delete .bx:hover {
-    color: rgb(227, 146, 160);
+    color: #000000;
 }

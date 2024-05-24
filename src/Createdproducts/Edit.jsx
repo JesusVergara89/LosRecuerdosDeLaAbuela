@@ -70,7 +70,7 @@ const Edit = ({ product, functionEditOrDelete }) => {
                 Category: '',
                 createdAt: '',
                 description: '',
-                discount_percentage:  '',
+                discount_percentage: '',
                 image: '',
                 likes: '',
                 price: '',
@@ -87,6 +87,7 @@ const Edit = ({ product, functionEditOrDelete }) => {
 
     return (
         <div className='edit'>
+            <button className='edit-back' onClick={functionEditOrDelete}>No editar</button>
             <div className="createdproduct-add-product">
                 <select value={select} onChange={handleChange}>
                     <option value="" disabled>Selecciona una categoría</option>
@@ -133,7 +134,6 @@ const Edit = ({ product, functionEditOrDelete }) => {
                 />
                 <button onClick={handlePublish} className="create">Update product</button>
             </div>
-            <button onClick={functionEditOrDelete}>back</button>
         </div>
     );
 };

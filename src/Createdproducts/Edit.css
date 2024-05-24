@@ -1,0 +1,20 @@
+.edit-back {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(110, 110, 242);
+    border-radius: 8px;
+    padding: 5px 5% 5px 5%;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.edit-back:hover {
+    background-color: rgb(186, 186, 255);
+    color: rgb(53, 53, 53);
+}
