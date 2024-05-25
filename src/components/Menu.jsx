@@ -16,7 +16,7 @@ const Menu = ({ burger_class, updatedMenu, thisUser, adminUID, menu_class }) => 
             <div className={menu_class}>
                 <ul className="custom-list">
                     <li onClick={updatedMenu}><Link to="/">Home</Link></li>
-                    <li onClick={updatedMenu}><Link to="/carrito">Carrito</Link></li>
+                    <li onClick={updatedMenu}><Link to="/basket">Carrito</Link></li>
 
                     {
                         thisUser !== null ? (

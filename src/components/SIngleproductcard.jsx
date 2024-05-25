@@ -1,7 +1,11 @@
 import React from 'react'
 import '../styles/SIngleproductcard.css'
+import useBasket from '../hooks/useBasket'
 
 const SIngleproductcard = ({ product }) => {
+
+    const { handlePublish } = useBasket(product)
+
     return (
         <div className='Mapsingleprodcut'>
             <div className="card">
@@ -25,7 +29,7 @@ const SIngleproductcard = ({ product }) => {
                 <div className="card-details-2">
                     <div className="card-description">{product.description}</div>
                     <div className="card-quantity">{`Cantidad: ${product.quantity}`}</div>
-                    <button className="card-btn-buy">
+                    <button onClick={handlePublish} className="card-btn-buy">
                         Comprar
                     </button>
                 </div>
@@ -38,13 +42,13 @@ const SIngleproductcard = ({ product }) => {
                 </div>
                 <label>{`${product.colors.length === 0 ? '' : 'Colores disponibles'}`}</label>
                 <div className="card-description-colors">
-                    {product.colors.map((data,i) => (
+                    {product.colors.map((data, i) => (
                         <p className={data.toLowerCase()} key={i}>{data.toLowerCase()}</p>
                     ))}
                 </div>
                 <label>{`${product.sizes.length === 0 ? '' : 'Tallas disponibles'}`}</label>
                 <div className="card-description-sizes">
-                    {product.sizes.map((data,i)=> (
+                    {product.sizes.map((data, i) => (
                         <p key={i}>{data.toLowerCase()}</p>
                     ))}
                 </div>
