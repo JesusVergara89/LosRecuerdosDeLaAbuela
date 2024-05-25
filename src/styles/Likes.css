@@ -1,0 +1,21 @@
+.likes {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+}
+
+.likes h6 {
+    all: unset;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.likes .bx {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: red;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/Card.css'
+import Likes from './Likes';
 
 const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
 
@@ -8,7 +9,9 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
             <img onClick={() => { setIDValue(product.id); handleScrollToTop(); handleClick() }} className="card-image" src={product.image} alt="Robot Image" />
             <div className={product.discount_percentage > 0 ? "card-discount-abs" : ''}>{product.discount_percentage > 0 ? `- ${product.discount_percentage}%` : ' '}</div>
             <div className="card-details-1">
-                <div className="card-likes">{`${product.likes.length} likes`}</div>
+                <div className="card-likes">
+                    <Likes product={product} />
+                </div>
                 <div className="card-price">
                     {product.discount_percentage > 0 ? (
                         <>
