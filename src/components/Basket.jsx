@@ -29,6 +29,7 @@ const Basket = () => {
                     ))
                 }
             </div>
+            
         </div>
     )
 }
