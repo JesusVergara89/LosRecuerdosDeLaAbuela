@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/Cardbasket.css'
+import Deleteproductbasket from './Deleteproductbasket'
 
 const Cardbasket = ({ product }) => {
 
@@ -27,7 +28,8 @@ const Cardbasket = ({ product }) => {
             </div>
 
             <div className="cardbasket-date">
-                {/*{product.createdAt.toDate().toDateString()}*/}
+                {new Date(product.createdAt).toLocaleString()}
+                <Deleteproductbasket  product={product} />
             </div>
 
             <div className="cardbasket-quantity">

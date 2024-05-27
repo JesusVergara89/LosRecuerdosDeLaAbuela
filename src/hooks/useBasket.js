@@ -11,7 +11,6 @@ const useBasket = (product) => {
         const productref = collection(db, 'Carrito');
         try {
             await addDoc(productref, {
-                id: product.id,
                 createdAt: Timestamp.now().toDate(),
                 photo: product.image,
                 price: product.price,
