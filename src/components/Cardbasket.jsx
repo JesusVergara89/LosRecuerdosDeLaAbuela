@@ -27,7 +27,7 @@ const Cardbasket = ({ product }) => {
             </div>
 
             <div className="cardbasket-date">
-                {product.createdAt.toDate().toDateString()}
+                {/*{product.createdAt.toDate().toDateString()}*/}
             </div>
 
             <div className="cardbasket-quantity">

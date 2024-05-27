@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import '../styles/Basket.css'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { auth, db } from '../firebaseConfig'
 import Cardbasket from './Cardbasket'
-import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Basket = () => {
-    const [products, setProducts] = useState([])
-    const [user] = useAuthState(auth)
-    useEffect(() => {
-        const productREF = collection(db, 'Carrito')
-        const q = query(productREF, orderBy('createdAt', 'desc'))
-        onSnapshot(q, (snapshot) => {
-            const Products = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-            setProducts(Products.filter(product => product.idBuyer === user.uid))
-        })
-    }, [])
+
+    const products = useSelector(state => state.callingbasket)
 
     return (
         <div className='Basket'>

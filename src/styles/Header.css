@@ -14,6 +14,47 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.51);
 }
 
+.header-basket {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header-basket .bx {
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+.header-basket label{
+    position: absolute;
+    top: -11px;
+    right: -10px;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        color: #000000;
+    }
+    50% {
+        transform: scale(1.1);
+        color: #12a1f3;
+    }
+}
+
+.header-basket label {
+    position: absolute;
+    top: -11px;
+    right: -10px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+
 .header-user-login {
     width: auto;
     height: auto;

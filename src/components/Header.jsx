@@ -6,6 +6,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
 import { signOut } from 'firebase/auth';
 import Menu from './Menu';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBasketProductValue } from '../store/slices/basketproducts.slice';
+import useCallBasket from '../hooks/useCallBasket';
+import { setCallingBasketProductValue } from '../store/slices/callingbasket.slice';
 
 const Header = () => {
 
@@ -14,6 +18,18 @@ const Header = () => {
   const [menu_class, setMenu_class] = useState('menu hidden')
   const [isMenuClickked, setIsMenuClickked] = useState(false)
   const [thisUser] = useAuthState(auth)
+  const quantityProducts = useSelector(state => state.basketProducts)
+  const dispatch = useDispatch()
+  const dispatch1 = useDispatch()
+  const setQuantityofProducts = (value) => dispatch(setBasketProductValue(value));
+  const callingBasketProducts = (value) => dispatch1(setCallingBasketProductValue(value));
+
+  const { products } = useCallBasket(thisUser)
+
+  callingBasketProducts(products.map(product => ({
+    ...product,
+    createdAt: product.createdAt ? product.createdAt.seconds * 1000 + product.createdAt.nanoseconds / 1000000 : null,
+  })))
 
   const updatedMenu = () => {
     if (!isMenuClickked) {
@@ -26,16 +42,14 @@ const Header = () => {
     setIsMenuClickked(!isMenuClickked)
   }
 
-  //console.log(thisUser)
-
   return (
     <header>
-      
+
       {
         thisUser &&
         <div className="header-user-login">
           <h4>{thisUser.displayName === null ? `Welcome ${thisUser.email}` : `Welcome ${thisUser.displayName}`}</h4>
-          <button onClick={() => { signOut(auth) }}>Salir</button>
+          <button onClick={() => { signOut(auth); setQuantityofProducts(0) }}>Salir</button>
         </div>
       }
 
@@ -45,7 +59,12 @@ const Header = () => {
         </Link>
       </div>
 
-      <Menu burger_class={burger_class} updatedMenu={updatedMenu} thisUser={thisUser} adminUID={adminUID} menu_class={menu_class}/>
+      <div className="header-basket">
+        <i className='bx bx-cart'></i>
+        <label>{quantityProducts}</label>
+      </div>
+
+      <Menu burger_class={burger_class} updatedMenu={updatedMenu} thisUser={thisUser} adminUID={adminUID} menu_class={menu_class} />
 
     </header>
   )
