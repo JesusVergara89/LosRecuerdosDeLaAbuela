@@ -4,6 +4,7 @@ import { db } from '../firebaseConfig';
 import { toast } from 'react-toastify';
 
 const DeleteProductBasket = ({ product }) => {
+
     const hours48InMillis = 48 * 60 * 60 * 1000;
 
     const deleteDocAsync = async () => {
@@ -23,7 +24,7 @@ const DeleteProductBasket = ({ product }) => {
                 deleteDocAsync();
             }
         }
-    }, [product]); 
+    }, [product]);
 
     return <div></div>;
 };
