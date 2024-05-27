@@ -121,11 +121,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color4);
     padding: 5px 2px 5px 2px;
     border-radius: 4px;
     margin-top: 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.card-btn-buy:hover {
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
 
 .card-description-all-details {
     width: 90%;

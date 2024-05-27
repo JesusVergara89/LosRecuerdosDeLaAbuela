@@ -44,15 +44,12 @@ header {
     padding: 5px 8px;
     cursor: pointer;
     border-radius: 5px;
-    background: rgba(247, 143, 186, 0.35);
-    backdrop-filter: blur(2.5px);
-    -webkit-backdrop-filter: blur(2.5px);
-    border: 1px solid rgba(255, 255, 255, 0.51);
+    background-color: #3498db;
 }
 
 .header-user-login button:hover {
-    background: rgba(247, 143, 186, 0.5); 
-    color: rgb(60, 60, 60); 
+    background: rgba(0, 138, 251, 0.5); 
+    color: rgb(0, 0, 0); 
     font-weight: bold;
 }
 

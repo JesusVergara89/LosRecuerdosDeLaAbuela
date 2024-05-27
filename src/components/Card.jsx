@@ -32,7 +32,7 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
                 <div className="card-description">{product.description}</div>
                 <div className="card-quantity">{`Cantidad: ${product.quantity}`}</div>
                 <button onClick={handlePublish} className="card-btn-buy">
-                    Comprar
+                    Agregar al carrito
                 </button>
             </div>
             <div className="card-created">{typeof (product.createdAt) === 'number' ? new Date(product.createdAt).toLocaleString() : product.createdAt.toDate().toDateString()}</div>
