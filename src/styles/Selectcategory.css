@@ -1,15 +1,18 @@
 .Selectcategory{
-    width: 50%;
+    width: 70%;
+    height: 40px;
     border: none;
     border-radius: 5px;
-    padding: 3px;
+    padding: 8px;
 }
 
 @media (width < 400px){
     .Selectcategory{
-        width: 80%;
+        width: 90%;
+        height: 30px;
         border: none;
         border-radius: 5px;
-        padding: 3px;
+        padding: 2px;
+        font-size: 0.7rem;
     }
 }

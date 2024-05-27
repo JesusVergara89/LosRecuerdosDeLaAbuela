@@ -36,7 +36,7 @@ const Menu = ({ burger_class, updatedMenu, thisUser, adminUID, menu_class }) => 
 
                     {
                         thisUser && thisUser.uid === adminUID ? (
-                            <li className='this-li' onClick={updatedMenu}><Link to="/create">Nuevo producto</Link></li>
+                            <li className='this-li' onClick={updatedMenu}><Link to="/create"><i className='bx bx-plus'></i></Link></li>
                         )
                             :
                             null
@@ -44,13 +44,13 @@ const Menu = ({ burger_class, updatedMenu, thisUser, adminUID, menu_class }) => 
 
                     {
                         thisUser && thisUser.uid === adminUID ? (
-                            <li className='this-li' onClick={updatedMenu}><Link to="/edit">Editar producto</Link></li>
+                            <li className='this-li' onClick={updatedMenu}><Link to="/edit"><i className='bx bx-edit'></i></Link></li>
                         )
                             :
                             null
                     }
 
-                    <li><i className='bx bx-minus'></i></li>
+                    
                     <label >Categorias de productos</label>
                     <Selectcategory />
                 </ul>
