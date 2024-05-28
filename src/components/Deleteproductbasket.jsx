@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { db } from '../firebaseConfig';
 import { toast } from 'react-toastify';
 
-const DeleteProductBasket = ({ product }) => {
+const DeleteProductBasket = ({ product, pushingPrices }) => {
 
     const hours48InMillis = 48 * 60 * 60 * 1000;
 
@@ -26,7 +26,7 @@ const DeleteProductBasket = ({ product }) => {
         }
     }, [product]);
 
-    return <div onClick={deleteDocAsync} className='delete-product-basket'><i className='bx bxs-trash'></i></div>;
+    return <div onClick={() => { deleteDocAsync(); pushingPrices(0, 3) }} className='delete-product-basket'><i className='bx bxs-trash'></i></div>;
 };
 
 export default DeleteProductBasket;

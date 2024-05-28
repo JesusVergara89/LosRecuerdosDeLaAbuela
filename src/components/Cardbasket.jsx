@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/Cardbasket.css'
 import Deleteproductbasket from './Deleteproductbasket'
 
-const Cardbasket = ({ product }) => {
+const Cardbasket = ({ product, pushingPrices, sumOfTheProces }) => {
 
     const [counter, setCounter] = useState(0)
 
@@ -16,6 +16,12 @@ const Cardbasket = ({ product }) => {
         }
     }
 
+    useEffect(() => {
+        if (sumOfTheProces.length === 0) {
+            setCounter(0);
+        }
+    }, [sumOfTheProces]);
+
     return (
         <div className='Cardbasket'>
             <div className="cardbasket-container-img">
@@ -27,15 +33,15 @@ const Cardbasket = ({ product }) => {
             </div>
 
             <div className="cardbasket-quantity">
-                <button onClick={() => { handleAddorsubs(0) }}><i className='bx bx-minus'></i></button>
+                <button onClick={() => { handleAddorsubs(0); pushingPrices(product.price, 0) }}><i className='bx bx-minus'></i></button>
                 <div className="cardbasket-counter">
                     {counter}
                 </div>
-                <button onClick={() => { handleAddorsubs(1) }}><i className='bx bx-plus'></i></button>
+                <button onClick={() => { handleAddorsubs(1); pushingPrices(product.price, 1) }}><i className='bx bx-plus'></i></button>
             </div>
 
             <div className="cardbasket-date">
-                <Deleteproductbasket product={product} />
+                <Deleteproductbasket pushingPrices={pushingPrices} product={product} />
             </div>
         </div>
 
