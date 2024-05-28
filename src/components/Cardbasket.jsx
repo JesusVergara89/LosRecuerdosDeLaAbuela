@@ -18,18 +18,12 @@ const Cardbasket = ({ product }) => {
 
     return (
         <div className='Cardbasket'>
-            <div className="cardbasket-container-1">
+            <div className="cardbasket-container-img">
                 <img src={product.photo} />
-                <div className="cardbasket-price">
-                  <h6>{`$ ${product.price}`}</h6>
-                  <label>Total:</label> 
-                  <h6>{`$ ${counter === 0 ? product.price : product.price*counter }`}</h6>  
-                </div>                
             </div>
 
-            <div className="cardbasket-date">
-                {new Date(product.createdAt).toLocaleString()}
-                <Deleteproductbasket  product={product} />
+            <div className="cardbasket-price">
+                <h6>{`$ ${counter === 0 ? product.price * 0 : product.price * counter}`}</h6>
             </div>
 
             <div className="cardbasket-quantity">
@@ -37,10 +31,14 @@ const Cardbasket = ({ product }) => {
                 <div className="cardbasket-counter">
                     {counter}
                 </div>
-                <button onClick={() => { handleAddorsubs(1) }} ><i className='bx bx-plus'></i></button>
+                <button onClick={() => { handleAddorsubs(1) }}><i className='bx bx-plus'></i></button>
             </div>
 
+            <div className="cardbasket-date">
+                <Deleteproductbasket product={product} />
+            </div>
         </div>
+
     )
 }
 

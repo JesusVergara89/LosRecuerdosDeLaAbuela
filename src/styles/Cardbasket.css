@@ -1,60 +1,83 @@
 .Cardbasket {
-    width: 280px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    background-color: rgb(239, 240, 239);
-    padding: 0px 0px 30px 0px;
-    border-radius: 15px;
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    position: relative;
 }
 
-.cardbasket-container-1 {
-    width: 100%;
-    height: auto;
+.cardbasket-container-img,
+.cardbasket-price,
+.cardbasket-quantity {
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-}
-
-.cardbasket-container-1 img{
-    width: 50%;
-    border-top-left-radius: 15px;
+    box-sizing: border-box;
 }
 
 .cardbasket-price {
-    width: 50%;
-    height: auto;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.cardbasket-price h6{
-    all: unset;
-    text-align: center;
-}
-
-.cardbasket-date {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    font-weight: bold;
 }
 
 .cardbasket-quantity {
-    width: 100%;
+    gap: 5px;
+}
+
+.cardbasket-container-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.Cardbasket h6, div, label {
+    margin: 0;
+    padding: 0;
+}
+
+.Cardbasket h6 {
+    border: 3px solid rgb(250, 133, 61);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.Cardbasket button {
+    all: unset;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(52, 52, 52);
+    cursor: pointer;
+}
+
+.Cardbasket button .bx{
+    color: white;
+}
+
+/*Delete prodcut basket*/
+
+.delete-product-basket {
     height: auto;
     display: flex;
-    align-items: center; 
     justify-content: center;
-    gap: 10px;   
+    align-items: center;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+}
+
+.delete-product-basket .bx{
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+}
+
+.delete-product-basket .bx:hover{
+    color: rgb(44, 43, 43);
 }

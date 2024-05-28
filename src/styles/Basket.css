@@ -16,7 +16,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    overflow: auto;
-
+    gap: 40px;
 }

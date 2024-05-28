@@ -26,7 +26,7 @@ const DeleteProductBasket = ({ product }) => {
         }
     }, [product]);
 
-    return <div></div>;
+    return <div onClick={deleteDocAsync} className='delete-product-basket'><i className='bx bxs-trash'></i></div>;
 };
 
 export default DeleteProductBasket;
