@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/Header.css'
 import logo from '../images/logoabuela.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
 import { signOut } from 'firebase/auth';
@@ -31,6 +31,8 @@ const Header = () => {
     createdAt: product.createdAt ? product.createdAt.seconds * 1000 + product.createdAt.nanoseconds / 1000000 : null,
   })))
 
+  const navigate = useNavigate()
+
   const updatedMenu = () => {
     if (!isMenuClickked) {
       setBurger_class('burger-bar clicked')
@@ -40,6 +42,10 @@ const Header = () => {
       setMenu_class('menu hidden')
     }
     setIsMenuClickked(!isMenuClickked)
+  }
+
+  const toBasket = () => {
+    navigate('/basket')
   }
 
   return (
@@ -59,9 +65,9 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="header-basket">
+      <div onClick={toBasket} className="header-basket">
         <i className='bx bx-cart'></i>
-        <label>{quantityProducts}</label>
+        <div className='header-basket-quantity'>{quantityProducts}</div>
       </div>
 
       <Menu burger_class={burger_class} updatedMenu={updatedMenu} thisUser={thisUser} adminUID={adminUID} menu_class={menu_class} />

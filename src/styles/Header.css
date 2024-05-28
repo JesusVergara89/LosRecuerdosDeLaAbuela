@@ -21,6 +21,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .header-basket .bx {
@@ -28,29 +29,30 @@ header {
     font-weight: bolder;
 }
 
-.header-basket label{
-    position: absolute;
-    top: -11px;
-    right: -10px;
-    font-weight: bold;
-}
-
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        color: #000000;
+        color: #ffffff;
     }
     50% {
         transform: scale(1.1);
-        color: #12a1f3;
+        color: #bbe0f5;
     }
 }
 
-.header-basket label {
+.header-basket .header-basket-quantity{
+    width: 22px;
+    height: 22px;
+    padding: 2px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
     position: absolute;
-    top: -11px;
-    right: -10px;
-    font-weight: bold;
+    top: -15px;
+    right: -17px;
+    font-size: 0.8rem;
     animation: pulse 2s infinite;
 }
 
