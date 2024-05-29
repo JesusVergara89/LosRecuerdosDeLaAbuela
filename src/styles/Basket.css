@@ -43,3 +43,25 @@
     font-size: 1rem;
     font-weight: bold;
 }
+
+.basket-empty {
+    width:300px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.basket-sellection {
+    width: 280px;
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.basket-sellection span {
+    color: red;
+    font-weight: bold;
+}

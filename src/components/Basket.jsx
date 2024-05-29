@@ -48,28 +48,37 @@ const Basket = () => {
 
     const sendMessageToWhatsApp = () => {
         const phoneNumber = '+573222117823';
-        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\n\n\nEl valor a pagar es: ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`;
+        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\n\nEl valor a pagar es: ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappLink);
     }
 
-    console.log(productsToBuy)
-
     return (
         <div className='Basket'>
-            <div className="basket-with-products">
-                {
-                    products && products.map((product, i) => (
-                        <Cardbasket setProductsToBUy={setProductsToBUy} howManyProduct={howManyProduct} sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
-                    ))
-                }
-            </div>
-            <div className="Basket-total">
-                <div className="Basket-total-pay">
-                    <h6>{`TOTAL: $ ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`}</h6>
+            {products.length === 0 ?
+                <h6 className='basket-empty'>No haz seleccionado ningún producto.</h6>
+                :
+                <div className="basket-with-products">
+                    <h6 className="basket-sellection">
+                        Si el producto aplica para <span>tallas</span> y <span>colores</span>, no te le olvide seleccionar la talla y el color adecuado antes de agregar cantidades del mismo.
+                    </h6>
+                    {
+                        products && products.map((product, i) => (
+                            <Cardbasket setProductsToBUy={setProductsToBUy} howManyProduct={howManyProduct} sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
+                        ))
+                    }
                 </div>
-                <button onClick={sendMessageToWhatsApp}>Comprar por WhatsApp</button>
-            </div>
+            }
+            {products.length === 0 ?
+                ''
+                :
+                <div className="Basket-total">
+                    <div className="Basket-total-pay">
+                        <h6>{`TOTAL: $ ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`}</h6>
+                    </div>
+                    <button onClick={sendMessageToWhatsApp}>Comprar por WhatsApp</button>
+                </div>
+            }
         </div>
     )
 }
