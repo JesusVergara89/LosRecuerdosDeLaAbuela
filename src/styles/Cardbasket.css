@@ -1,5 +1,6 @@
 .Cardbasket {
     max-width: 300px;
+    height: 140px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
@@ -90,6 +91,7 @@
 }
 
 .basket-select-color {
+
     position: absolute;
     bottom: -28px;
     right: 5px;
