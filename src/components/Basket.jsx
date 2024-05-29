@@ -48,7 +48,7 @@ const Basket = () => {
 
     const sendMessageToWhatsApp = () => {
         const phoneNumber = '+573222117823';
-        const message = `Hola estoy interesad@ en los siguientes productos: \n ${productInfo}`;
+        const message = `Hola estoy interesad@ en los siguientes productos:\n\n${productInfo} \n\n\n El valor a pagar es: ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappLink);
     }
