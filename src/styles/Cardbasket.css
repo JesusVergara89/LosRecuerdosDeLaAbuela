@@ -6,6 +6,7 @@
     background-color: #f0f0f0;
     border-radius: 8px;
     position: relative;
+    padding: 6px;
 }
 
 .cardbasket-container-img,
@@ -29,8 +30,8 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 
 .Cardbasket h6, div, label {
@@ -80,4 +81,10 @@
 
 .delete-product-basket .bx:hover{
     color: rgb(44, 43, 43);
+}
+
+.basket-select-size {
+    position: absolute;
+    bottom: -28px;
+    left: 5px;
 }

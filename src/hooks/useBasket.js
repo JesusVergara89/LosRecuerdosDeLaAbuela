@@ -11,10 +11,13 @@ const useBasket = (product) => {
         const productref = collection(db, 'Carrito');
         try {
             await addDoc(productref, {
+                productID: product.id,
                 createdAt: Timestamp.now().toDate(),
                 photo: product.image,
                 price: product.price,
-                idBuyer: user.uid
+                idBuyer: user.uid,
+                colors: product.colors,
+                sizes: product.sizes
             });
             toast("Producto agregado correctamente", { type: "success" });
         } catch (e) {

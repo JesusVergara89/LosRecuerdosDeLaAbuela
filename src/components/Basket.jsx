@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux'
 import '../styles/Basket.css'
 import Cardbasket from './Cardbasket'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Basket = () => {
 
     const products = useSelector(state => state.callingbasket)
 
     const [sumOfTheProces, setsumOfTheProces] = useState([])
+    const [productsToBUy, setProductsToBUy] = useState([])
 
     const pushingPrices = (price, or) => {
         if (or === 0) {
@@ -22,14 +23,28 @@ const Basket = () => {
         }
     };
 
+    const howManyProduct = (product, or) => {
+        if (or === 0) {
+            const productIndex = productsToBUy.findIndex(p => p.productID === product.productID);
+            if (productIndex !== -1) {
+                const updatedProducts = [...productsToBUy];
+                updatedProducts.splice(productIndex, 1);
+                setProductsToBUy(updatedProducts);
+            }
+        } else if (or === 1) {
+            setProductsToBUy(prevState => [...prevState, product]);
+        }
+    };
+
     const totalValues = sumOfTheProces.map(data => parseFloat(data))
+
 
     return (
         <div className='Basket'>
             <div className="basket-with-products">
                 {
                     products && products.map((product, i) => (
-                        <Cardbasket sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
+                        <Cardbasket howManyProduct={howManyProduct} sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
                     ))
                 }
             </div>
