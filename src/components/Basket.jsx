@@ -40,9 +40,9 @@ const Basket = () => {
 
     const productInfo = productsToBuy.map(product => {
         if (product.size === '' && product.color === '') {
-            return `Id comprador ${product.idBuyer}\nId producto: ${product.productID}\nPrecio: ${product.price}\n`;
+            return `Id comprador ${product.idBuyer}\nId producto: ${product.productID}\nPrecio: ${product.price}\nImagen: ${product.photo}\n\n`;
         } else {
-            return `Id Comprador ${product.idBuyer}\nId producto: ${product.productID}\nColor: ${product.color}\nTalla:${product.size}\nPrecio:${product.price}\n`;
+            return `Id Comprador ${product.idBuyer}\nId producto: ${product.productID}\nColor: ${product.color}\nTalla:${product.size}\nPrecio:${product.price}\n${product.photo}\n\n`;
         }
     }).join('\n');
 
@@ -52,6 +52,8 @@ const Basket = () => {
         const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappLink);
     }
+
+    console.log(productsToBuy)
 
     return (
         <div className='Basket'>

@@ -58,7 +58,8 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
                             price: product.price,
                             idBuyer: product.idBuyer,
                             color: select1,
-                            size: select
+                            size: select,
+                            photo: product.photo
                         }
                         , 1)
                 }}><i className='bx bx-plus'></i></button>
