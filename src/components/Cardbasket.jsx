@@ -5,11 +5,17 @@ import Deleteproductbasket from './Deleteproductbasket'
 const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) => {
 
     const [select, setSelect] = useState('');
+    const [select1, setSelect1] = useState('');
     const [counter, setCounter] = useState(0);
 
     const handleChange = (event) => {
         const size = event.target.value;
         setSelect(size);
+    };
+
+    const handleChange1 = (event) => {
+        const color = event.target.value;
+        setSelect1(color);
     };
 
     const handleAddorsubs = (data) => {
@@ -27,7 +33,6 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) 
             setCounter(0);
         }
     }, [sumOfTheProces]);
-
 
     return (
         <div className='Cardbasket'>
@@ -51,7 +56,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) 
                             productID: product.productID,
                             price: product.price,
                             idBuyer: product.idBuyer,
-                            color: '',
+                            color: select1,
                             size: select
                         }
                         , 1)
@@ -62,7 +67,24 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) 
              * From here all the html and jsx is in position absolute
              */}
 
-            {product.sizes &&
+            {product.colors.length === 0 ?
+                ''
+                :
+                <div className='basket-select-color'>
+                    <select value={select1} onChange={handleChange1}>
+                        <option value="" disabled>Selecciona un color</option>
+                        {product.colors.map((category) => (
+                            <option key={category} value={category}>
+                                {category.charAt(0).toUpperCase() + category.slice(1)}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            }
+
+            {product.sizes.length === 0 ?
+                ''
+                :
                 <div className='basket-select-size'>
                     <select value={select} onChange={handleChange}>
                         <option value="" disabled>Selecciona una talla</option>

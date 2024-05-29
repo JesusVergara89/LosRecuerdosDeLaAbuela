@@ -18,3 +18,28 @@
     align-items: center;
     gap: 60px;
 }
+
+.Basket-total {
+    width: 270px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.Basket-total-pay {
+    width: 100%;
+    height: auto;display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Basket-total-pay h6{
+    all: unset;
+    font-size: 1rem;
+    font-weight: bold;
+}

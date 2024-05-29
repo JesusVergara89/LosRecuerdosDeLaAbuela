@@ -8,7 +8,7 @@ const Basket = () => {
     const products = useSelector(state => state.callingbasket)
 
     const [sumOfTheProces, setsumOfTheProces] = useState([])
-    const [productsToBUy, setProductsToBUy] = useState([])
+    const [productsToBuy, setProductsToBUy] = useState([])
 
     const pushingPrices = (price, or) => {
         if (or === 0) {
@@ -25,9 +25,9 @@ const Basket = () => {
 
     const howManyProduct = (product, or) => {
         if (or === 0) {
-            const productIndex = productsToBUy.findIndex(p => p.productID === product.productID);
+            const productIndex = productsToBuy.findIndex(p => p.productID === product.productID);
             if (productIndex !== -1) {
-                const updatedProducts = [...productsToBUy];
+                const updatedProducts = [...productsToBuy];
                 updatedProducts.splice(productIndex, 1);
                 setProductsToBUy(updatedProducts);
             }
@@ -38,6 +38,20 @@ const Basket = () => {
 
     const totalValues = sumOfTheProces.map(data => parseFloat(data))
 
+    const productInfo = productsToBuy.map(product => {
+        if (product.size === '' && product.color === '') {
+            return `Precio: ${product.price} : Comprador ${product.idBuyer} : Id: ${product.productID} \n`;
+        } else {
+            return `Precio: ${product.price} : Comprador ${product.idBuyer} : Color: ${product.color} : Talla: ${product.size} : Id: ${product.productID} \n`;
+        }
+    }).join('\n');
+
+    const sendMessageToWhatsApp = () => {
+        const phoneNumber = '+573222117823';
+        const message = `Hola estoy interesad@ en los siguientes productos: \n ${productInfo}`;
+        const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+        window.open(whatsappLink);
+    }
 
     return (
         <div className='Basket'>
@@ -49,9 +63,10 @@ const Basket = () => {
                 }
             </div>
             <div className="Basket-total">
-                <div className="Basket-total pay">
-                    <h6>{`TOTAL: $${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`}</h6>
+                <div className="Basket-total-pay">
+                    <h6>{`TOTAL: $ ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`}</h6>
                 </div>
+                <button onClick={sendMessageToWhatsApp}>Enviar mensaje por WhatsApp</button>
             </div>
         </div>
     )

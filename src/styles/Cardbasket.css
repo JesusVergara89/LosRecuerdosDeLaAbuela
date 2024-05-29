@@ -88,3 +88,9 @@
     bottom: -28px;
     left: 5px;
 }
+
+.basket-select-color {
+    position: absolute;
+    bottom: -28px;
+    right: 5px;
+}
