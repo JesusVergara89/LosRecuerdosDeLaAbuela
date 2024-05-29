@@ -86,13 +86,28 @@
 
 .basket-select-size {
     position: absolute;
-    bottom: -28px;
+    bottom: -35px;
     left: 5px;
+    border-radius: 4px;
+}
+
+.basket-select-size select {
+    padding: 3px;
+    font-size: 0.8rem;
+    border: 0.01rem solid black;
+    border-radius: 4px;
 }
 
 .basket-select-color {
-
     position: absolute;
-    bottom: -28px;
+    bottom: -35px;
     right: 5px;
+    border-radius: 4px;
+}
+
+.basket-select-color select {
+    padding: 3px;
+    font-size: 0.8rem;
+    border: 0.01rem solid black;
+    border-radius: 4px;
 }

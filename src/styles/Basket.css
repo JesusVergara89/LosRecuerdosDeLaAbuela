@@ -65,3 +65,16 @@
     color: red;
     font-weight: bold;
 }
+
+.Basket-total button {
+    width: auto;
+    height: auto;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background-color: #25D366;
+    cursor: pointer;
+}
+
+.Basket-total button:hover {
+    background-color: #53f08d;
+}
