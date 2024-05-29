@@ -40,15 +40,15 @@ const Basket = () => {
 
     const productInfo = productsToBuy.map(product => {
         if (product.size === '' && product.color === '') {
-            return `Precio: ${product.price} : Comprador ${product.idBuyer} : Id: ${product.productID} \n`;
+            return `Id comprador ${product.idBuyer}\nId producto: ${product.productID}\nPrecio: ${product.price}\n`;
         } else {
-            return `Precio: ${product.price} : Comprador ${product.idBuyer} : Color: ${product.color} : Talla: ${product.size} : Id: ${product.productID} \n`;
+            return `Id Comprador ${product.idBuyer}\nId producto: ${product.productID}\nColor: ${product.color}\nTalla:${product.size}\nPrecio:${product.price}\n`;
         }
     }).join('\n');
 
     const sendMessageToWhatsApp = () => {
         const phoneNumber = '+573222117823';
-        const message = `Hola estoy interesad@ en los siguientes productos:\n\n${productInfo} \n\n\n El valor a pagar es: ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`;
+        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\n\n\nEl valor a pagar es: ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappLink);
     }
@@ -58,7 +58,7 @@ const Basket = () => {
             <div className="basket-with-products">
                 {
                     products && products.map((product, i) => (
-                        <Cardbasket howManyProduct={howManyProduct} sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
+                        <Cardbasket setProductsToBUy={setProductsToBUy} howManyProduct={howManyProduct} sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
                     ))
                 }
             </div>
@@ -66,7 +66,7 @@ const Basket = () => {
                 <div className="Basket-total-pay">
                     <h6>{`TOTAL: $ ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`}</h6>
                 </div>
-                <button onClick={sendMessageToWhatsApp}>Enviar mensaje por WhatsApp</button>
+                <button onClick={sendMessageToWhatsApp}>Comprar por WhatsApp</button>
             </div>
         </div>
     )

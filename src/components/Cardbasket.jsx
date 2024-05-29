@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../styles/Cardbasket.css'
 import Deleteproductbasket from './Deleteproductbasket'
 
-const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) => {
+const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, setProductsToBUy }) => {
 
     const [select, setSelect] = useState('');
     const [select1, setSelect1] = useState('');
@@ -31,6 +31,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) 
     useEffect(() => {
         if (sumOfTheProces.length === 0) {
             setCounter(0);
+            setProductsToBUy([])
         }
     }, [sumOfTheProces]);
 
@@ -98,7 +99,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct }) 
             }
 
             <div className="cardbasket-date">
-                <Deleteproductbasket pushingPrices={pushingPrices} product={product} />
+                <Deleteproductbasket howManyProduct={howManyProduct} pushingPrices={pushingPrices} product={product} />
             </div>
         </div>
     );
