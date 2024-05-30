@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/SIngleproductcard.css'
 import useBasket from '../hooks/useBasket'
 import Likes from './Likes'
+import Comments from './Comments'
 
 const SIngleproductcard = ({ product }) => {
 
@@ -15,6 +16,10 @@ const SIngleproductcard = ({ product }) => {
                 <div className="card-details-1">
                     <div className="card-likes">
                         <Likes product={product} />
+                        <div className="card-likes-comments">
+                            <i class='bx bxs-message-dots'></i>
+                            <h6>{product.Comments ? product.Comments.length : 0}</h6>
+                        </div>
                     </div>
                     <div className="card-price">
                         {product.discount_percentage > 0 ? (
@@ -56,6 +61,7 @@ const SIngleproductcard = ({ product }) => {
                     ))}
                 </div>
             </div>
+            <Comments id={product.id} />
         </div>
     )
 }

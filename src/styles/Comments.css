@@ -1,0 +1,95 @@
+.Comments {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.Comments h6 {
+    all: unset;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Comments-body {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    padding: 10px 5%;
+    background-color: rgb(240, 240, 240);
+    border-radius: 8px;
+}
+
+.Comments-commet {
+    width: 90%;
+    height: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    text-align: justify;
+    margin-bottom: 5cqmax;
+}
+
+.Comments-commet h5 {
+    all: unset;
+    font-size: 0.9rem;
+    color: rgb(52, 51, 51);
+}
+
+.comment-online.on {
+    all: unset;
+    font-size: 0.8rem;
+    color: green;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+}
+
+.comment-online.off {
+    all: unset;
+    font-size: 0.8rem;
+    color: rgb(250, 88, 0);
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+}
+
+.comment-delete {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.Comments textarea {
+    width: 284px;
+    max-width: 300px;
+    min-height: 50px;
+    resize: vertical;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.Comments textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.Comments .bx {
+    cursor: pointer;
+    color: black;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.Comments .bx:hover {
+    color: rgb(54, 54, 54);
+}

@@ -91,6 +91,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+}
+
+.card-likes-comments {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-likes  h6{
+    text-align: center;
+    all: unset;
 }
 
 .card-discount {

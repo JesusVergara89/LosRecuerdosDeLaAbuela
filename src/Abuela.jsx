@@ -51,7 +51,7 @@ function Abuela() {
             <Categorycomponent />
           }
         />
-
+        
         <Route element={<Protectedroutes />}>
           <Route path='/basket'
             element={

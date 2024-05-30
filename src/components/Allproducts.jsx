@@ -50,7 +50,7 @@ const Allproducts = ({ idProduct }) => {
         const valor = event.target.value.toLowerCase();
         setFiltro(valor);
         const resultados = itemp.filter(product =>
-            product.Category.toLowerCase().includes(valor) || product.description.toLowerCase().includes(valor)
+            product.Category.toLowerCase().includes(valor) || product.description.toLowerCase().includes(valor) 
         );
         setUsuariosFiltrados(resultados);
     };
