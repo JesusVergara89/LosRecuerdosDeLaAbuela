@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Card.css'
 import Likes from './Likes';
-import useBasket from '../hooks/useBasket';
+import useBasket from '../hooks/useBasket'
 
 const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
 
@@ -10,13 +10,13 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
     return (
         <>
             <div className="card">
-                <img onClick={() => { setIDValue(product.id); handleScrollToTop(); handleClick() }} className="card-image" src={product.image} alt="Product Image" />
+                <img onClick={() => { setIDValue(product.id); handleScrollToTop(); handleClick(product.id) }} className="card-image" src={product.image} alt="Product Image" />
                 <div className={product.discount_percentage > 0 ? "card-discount-abs" : ''}>{product.discount_percentage > 0 ? `- ${product.discount_percentage}%` : ' '}</div>
                 <div className="card-details-1">
                     <div className="card-likes">
                         <Likes product={product} />
-                        <div onClick={handleClick} className="card-likes-comments">
-                            <i class='bx bxs-message-dots'></i>
+                        <div className="card-likes-comments">
+                            <i className='bx bxs-message-dots'></i>
                             <h6>{product.Comments ? product.Comments.length : 0}</h6>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 const Singleproduct = () => {
 
-    const { id } = useParams()
+    let { id } = useParams()
 
     const [product, setProduct] = useState(null)
 
@@ -29,9 +29,7 @@ const Singleproduct = () => {
         }
     }, [productID])
 
-
     let stopPropagation = false
-
 
     return (
         <>
