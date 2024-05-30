@@ -40,9 +40,9 @@ const Basket = () => {
 
     const productInfo = productsToBuy.map(product => {
         if (product.size === '' && product.color === '') {
-            return `Id comprador ${product.idBuyer}\nId producto: ${product.productID}\nPrecio: ${product.price}\nImagen: ${product.photo}\n\n`;
+            return `Id comprador: ${product.idBuyer}\nId producto: ${product.productID}\nPrecio: ${product.price}\nImagen: ${product.photo}\n\n`;
         } else {
-            return `Id Comprador ${product.idBuyer}\nId producto: ${product.productID}\nColor: ${product.color}\nTalla: ${product.size}\nPrecio:  ${product.price}\nImagen: ${product.photo}\n\n`;
+            return `Id Comprador: ${product.idBuyer}\nId producto: ${product.productID}\nColor: ${product.color}\nTalla: ${product.size}\nPrecio:  ${product.price}\nImagen: ${product.photo}\n\n`;
         }
     }).join('\n');
 
