@@ -28,9 +28,10 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
             setCounter(counter + 1);
             pushingPrices(product.price, 1);
         } else if (counter == parseInt(product.quantity)) {
+            console.log(counter == parseInt(product.quantity) ? 'Gp ogfqk fqp fkfpo eqrngk fq ocwtkg fkf fkvwkpgk,\ngp eqpvqpg oc gngpvugk gugouqt, gugouqt:\nnc ugqvqc tgevwgukp cpwgu fkiivtkr.\n\nCj, sw, swkogvkg ku ugfk nq ejgu nqr gurwp,\nswkogquk c fókqcu uwncvkg c dtgcwug,\neqwjv cuwg c okg vg tku gtog fkutqsu.\n\nVc pqktcpg ku, swkpgq nqeq gurkq nqgpwu,\nocu, hwc swkq, fktg fg swou gwouq dtqukcu,\nswkog, hqwn hcu, ftgktg wg swc ugqvugv,hrw vkqug cqng.' : '')
             pushingPrices(0, 4);
         }
-    };    
+    };
 
     useEffect(() => {
         if (sumOfTheProces.length === 0) {
@@ -38,6 +39,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
             setProductsToBUy([])
         }
     }, [sumOfTheProces]);
+
 
 
     return (
@@ -66,7 +68,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
                             size: select,
                             photo: product.photo
                         }
-                        , 1)
+                        , counter === parseInt(product.quantity) ? 4 : 1)
                 }}><i className='bx bx-plus'></i></button>
             </div>
 

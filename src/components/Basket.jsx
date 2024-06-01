@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import '../styles/Basket.css'
 import Cardbasket from './Cardbasket'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 const Basket = () => {
@@ -13,7 +13,7 @@ const Basket = () => {
 
     const pushingPrices = (price, or) => {
         if (or === 4) {
-            toast("El producto alcanzó la cantidad en stock", { type: "warning" });
+            toast("El producto alcanzó la cantidad máxima en stock", { type: "warning" });
             return;
         }
         if (or === 0) {
