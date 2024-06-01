@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import '../styles/Basket.css'
 import Cardbasket from './Cardbasket'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const Basket = () => {
 
@@ -11,6 +12,10 @@ const Basket = () => {
     const [productsToBuy, setProductsToBUy] = useState([])
 
     const pushingPrices = (price, or) => {
+        if (or === 4) {
+            toast("El producto alcanzó la cantidad en stock", { type: "warning" });
+            return;
+        }
         if (or === 0) {
             if (sumOfTheProces.includes(price)) {
                 const index = sumOfTheProces.indexOf(price);
@@ -20,7 +25,7 @@ const Basket = () => {
             setsumOfTheProces(prevState => [...prevState, price]);
         } else if (or == 3) {
             setsumOfTheProces([]);
-        }
+        } 
     };
 
     const howManyProduct = (product, or) => {

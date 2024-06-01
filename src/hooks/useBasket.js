@@ -17,7 +17,8 @@ const useBasket = (product) => {
                 price: product.price,
                 idBuyer: user.uid,
                 colors: product.colors,
-                sizes: product.sizes
+                sizes: product.sizes,
+                quantity: product.quantity
             });
             toast("Producto agregado correctamente", { type: "success" });
         } catch (e) {

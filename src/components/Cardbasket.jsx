@@ -19,14 +19,18 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
     };
 
     const handleAddorsubs = (data) => {
-        if (data === 0 && counter > 0) {
-            setCounter(counter - 1)
-        } else if (data === 0 && counter === 0) {
-            setCounter(0)
-        } else {
-            setCounter(counter + 1)
+        if (data === 0) {
+            if (counter > 0) {
+                setCounter(counter - 1);
+                pushingPrices(product.price, 0);
+            }
+        } else if (counter < product.quantity) {
+            setCounter(counter + 1);
+            pushingPrices(product.price, 1);
+        } else if (counter == parseInt(product.quantity)) {
+            pushingPrices(0, 4);
         }
-    };
+    };    
 
     useEffect(() => {
         if (sumOfTheProces.length === 0) {
@@ -34,6 +38,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
             setProductsToBUy([])
         }
     }, [sumOfTheProces]);
+
 
     return (
         <div className='Cardbasket'>
@@ -46,12 +51,12 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
             </div>
 
             <div className="cardbasket-quantity">
-                <button onClick={() => { handleAddorsubs(0); pushingPrices(product.price, 0); howManyProduct(product, 0) }}><i className='bx bx-minus'></i></button>
+                <button onClick={() => { handleAddorsubs(0); howManyProduct(product, 0) }}><i className='bx bx-minus'></i></button>
                 <div className="cardbasket-counter">
                     {counter}
                 </div>
                 <button onClick={() => {
-                    handleAddorsubs(1); pushingPrices(product.price, 1);
+                    handleAddorsubs(1);
                     howManyProduct(
                         {
                             productID: product.productID,
