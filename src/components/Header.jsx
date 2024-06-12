@@ -14,6 +14,7 @@ import { setCallingBasketProductValue } from '../store/slices/callingbasket.slic
 const Header = () => {
 
   const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
+  const adminUID1 = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID1;
   const [burger_class, setBurger_class] = useState('burger-bar unclicked')
   const [menu_class, setMenu_class] = useState('menu hidden')
   const [isMenuClickked, setIsMenuClickked] = useState(false)
@@ -70,7 +71,7 @@ const Header = () => {
         <div className='header-basket-quantity'>{quantityProducts}</div>
       </div>
 
-      <Menu burger_class={burger_class} updatedMenu={updatedMenu} thisUser={thisUser} adminUID={adminUID} menu_class={menu_class} />
+      <Menu burger_class={burger_class} updatedMenu={updatedMenu} thisUser={thisUser} adminUID1={adminUID1} adminUID={adminUID} menu_class={menu_class} />
 
     </header>
   )
