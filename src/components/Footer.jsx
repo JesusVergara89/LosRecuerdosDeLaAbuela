@@ -15,7 +15,7 @@ const Footer = () => {
                 <ul>
                     <li><a href="#">Facebook</a></li>
                     <li><a href="https://www.tiktok.com/@el.bal.de.la.abue8" target="_blank">Tik Tok</a></li>
-                    <li><a href="https://www.instagram.com/elbauldelaabuela7" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/elbauldelaabuela7" target="_blank">Instagram</a></li>
                 </ul>
             </div>
         </footer>

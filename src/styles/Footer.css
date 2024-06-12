@@ -40,6 +40,7 @@ ul li a {
     all: unset;
     text-decoration: none;
     color: blue;
+    cursor: pointer;
 }
 
 ul li a:hover {
