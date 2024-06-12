@@ -12,6 +12,7 @@ import useSizes from '../hooks/useSizes';
 
 const Createdproduct = () => {
     const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
+    const adminUID1 = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID1;
     const navigate = useNavigate();
     const [logUser] = useAuthState(auth);
     const [select, setSelect] = useState('');
@@ -56,15 +57,15 @@ const Createdproduct = () => {
 
     const handleChangeSize = (event) => {
         const size = event.target.value;
-        if(selectsizes.includes(size)){
-            toast('Esa talla ya esta fue seleccionada, escoge otra', { type: "error" }) 
-        }else{
-          setSelectsizes([...selectsizes, size]);
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            sizes: [...prevFormData.sizes, size]
-        }));  
-        }        
+        if (selectsizes.includes(size)) {
+            toast('Esa talla ya esta fue seleccionada, escoge otra', { type: "error" })
+        } else {
+            setSelectsizes([...selectsizes, size]);
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                sizes: [...prevFormData.sizes, size]
+            }));
+        }
     };
 
     const handleChange1 = (e) => {
@@ -131,7 +132,7 @@ const Createdproduct = () => {
     };
 
     return (
-        logUser && logUser.uid === adminUID ? (
+        logUser && logUser.uid === adminUID || logUser.uid === adminUID1 ? (
             <div className="createdproduct">
                 <div className="createdproduct-add-product">
                     <select value={select} onChange={handleChange}>

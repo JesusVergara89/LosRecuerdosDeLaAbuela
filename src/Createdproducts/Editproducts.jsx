@@ -9,6 +9,7 @@ const Editproducts = () => {
 
     const [logUser] = useAuthState(auth);
     const adminUID = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID;
+    const adminUID1 = import.meta.env.VITE_FIREBASE_APP_ADMIN_UID1;
 
     const [products, setProducts] = useState([])
 
@@ -25,7 +26,7 @@ const Editproducts = () => {
     }, [])
     
     return (
-        logUser && products && logUser.uid === adminUID  ? (
+        logUser && products && logUser.uid === adminUID  || logUser.uid === adminUID1 ? (
             <div className="Editproducts">
                 {
                     products.map((product, i) => (
