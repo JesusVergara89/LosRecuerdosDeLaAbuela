@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="social-container">
                 <h3>Redes Sociales</h3>
                 <ul>
-                    <li><a href="#">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/people/Mar%C3%ADa-Cuevas/pfbid0fJpNLdzv3EzR7xtoQ6wU45ys2B38CivYdCfTujmEgaH6sd7ZKWmGpeXrL1Sr4oJGl/?mibextid=LQQJ4d&rdid=RI91fWmD2xN0hmvi&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FcPxwwzfa3UNkotAr%2F%3Fmibextid%3DLQQJ4d" target="_blank">Facebook</a></li>
                     <li><a href="https://www.tiktok.com/@el.bal.de.la.abue8" target="_blank">Tik Tok</a></li>
                     <li><a href="https://www.instagram.com/elbauldelaabuela7" target="_blank">Instagram</a></li>
                 </ul>
