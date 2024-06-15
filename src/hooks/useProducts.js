@@ -1,6 +1,17 @@
 const useProducts = () => {
 
-    const categories = ['ropa', 'juguetes', 'muebles', 'barbie','Moster High'];
+    const categories =
+        [
+            'ropa',
+            'juguetes',
+            'muebles',
+            'barbie',
+            'Moster High',
+            'Antiguedades',
+            'Porcelanas',
+            'Cristal cortado',
+            'Cuadros'
+        ];
 
     return { categories }
 }
