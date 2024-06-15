@@ -1,6 +1,6 @@
 const useProducts = () => {
 
-    const categories = ['ropa', 'juguetes', 'muebles'];
+    const categories = ['ropa', 'juguetes', 'muebles', 'barbie','Moster High'];
 
     return { categories }
 }
