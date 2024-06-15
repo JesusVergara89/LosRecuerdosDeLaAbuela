@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/Header.css'
-import logo from '../images/logoabuela.png'
+import logo from '../images/fodoabuela1.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
