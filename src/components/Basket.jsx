@@ -29,6 +29,7 @@ const Basket = () => {
     };
 
     const howManyProduct = (product, or) => {
+        //console.log(product) i need to create a hookthat update the prodcut and chane the cuentity for 14 min if the prodcutd is not buy it the quantity will be restore to the previous value'
         if (or === 0) {
             const productIndex = productsToBuy.findIndex(p => p.productID === product.productID);
             if (productIndex !== -1) {
