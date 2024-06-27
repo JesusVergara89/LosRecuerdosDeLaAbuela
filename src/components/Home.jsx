@@ -44,14 +44,14 @@ const Home = () => {
       <div className="home-images" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         <div className="home-images-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           <div className="home-images-item" >
-            <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/grandmma.png" alt="" />
+            <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/plato_decorativo.png" alt="" />
           </div>
 
           <div className="home-images-item" >
-            <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/pagacomo.png" alt="" />
+            <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/muneca-nwe.jpg" alt="" />
           </div>
           <div className="home-images-item" >
-            <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/rrr.png" alt="" />
+            <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/another_plate.webp" alt="" />
           </div>
         </div>
         <button className="prev-button" onClick={handlePrev}> <i className='bx bxs-left-arrow' ></i> </button>
