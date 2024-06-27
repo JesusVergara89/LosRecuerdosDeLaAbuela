@@ -46,7 +46,6 @@ const Home = () => {
           <div className="home-images-item" >
             <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/plato_decorativo.png" alt="" />
           </div>
-
           <div className="home-images-item" >
             <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/main/muneca-nwe.jpg" alt="" />
           </div>
