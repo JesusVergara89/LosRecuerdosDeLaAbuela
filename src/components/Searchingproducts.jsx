@@ -1,10 +1,14 @@
 import React from 'react'
 
-const Searchingproducts = ({filtro,handleInputChange}) => {
+const Searchingproducts = ({ filtro, handleInputChange }) => {
     return (
         <>
             <div className="Allproducts-title">
-                <img src="https://raw.githubusercontent.com/JesusVergara89/ImagesWeb/d6a9afe1b3d685f1efa1cec810b291eb6a8f54be/FindProdcuts.png" alt="" />
+                <h2>Filtra productos por:</h2>
+                <ul>
+                    <li> <span>- </span>Categoría</li>
+                    <li><span>- </span>Descripción</li>
+                </ul>
             </div>
 
             <div className="all-user-find-inner">

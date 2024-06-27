@@ -13,14 +13,19 @@
     width: 80%;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    overflow: hidden;
 }
 
-.Allproducts-title img {
-    height: 180px;
+.Allproducts-title h2 {
+    all: unset;
+    font-weight: bold;
+}
+
+.Allproducts-title ul {
+    font-size: 1rem;
 }
 
 .all-user-find-inner {
@@ -55,8 +60,3 @@
     margin-bottom: 150px;
 }
 
-@media (width < 600px){
-    .Allproducts-title img {
-        height: 120px;
-    }
-}
