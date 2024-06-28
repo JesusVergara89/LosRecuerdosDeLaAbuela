@@ -116,7 +116,8 @@ const Createdproduct = () => {
                             price: formData.price,
                             quantity: formData.quantity,
                             colors: formData.colors,
-                            sizes: formData.sizes
+                            sizes: formData.sizes,
+                            onShop_quantity: 0
                         })
                             .then(() => {
                                 toast("Producto agregado correctamente", { type: "success" });
