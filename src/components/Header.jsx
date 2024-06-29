@@ -71,7 +71,7 @@ const Header = () => {
   }
 
   const nowInMillis = Date.now();
-  const twentyFiveMinutesInMillis = 1 * 60 * 1000;
+  const twentyFiveMinutesInMillis = 24 * 60 * 1000;
 
   if (thisUser !== null) {
     allBasket.forEach(product => {
