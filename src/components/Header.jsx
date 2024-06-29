@@ -73,14 +73,15 @@ const Header = () => {
   const nowInMillis = Date.now();
   const twentyFiveMinutesInMillis = 1 * 60 * 1000;
 
-  allBasket.forEach(product => {
-    const productCreatedAtInMillis = product.createdAt.seconds * 1000 + product.createdAt.nanoseconds / 1000000;
-    if ((nowInMillis - productCreatedAtInMillis) > twentyFiveMinutesInMillis) {
-      updateProduct(product.productID)
-      deleteDocAsync(product.id);
-    }
-  });
-
+  if (thisUser !== null) {
+    allBasket.forEach(product => {
+      const productCreatedAtInMillis = product.createdAt.seconds * 1000 + product.createdAt.nanoseconds / 1000000;
+      if ((nowInMillis - productCreatedAtInMillis) > twentyFiveMinutesInMillis) {
+        updateProduct(product.productID);
+        deleteDocAsync(product.id);
+      }
+    });
+  }
   //console.log(allBasket)
 
   return (

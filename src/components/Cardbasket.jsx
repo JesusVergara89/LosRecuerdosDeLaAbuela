@@ -90,7 +90,7 @@ const Cardbasket = ({ product }) => {
                     console.log(error)
                 }
             } else {
-                toast('Tienes que seleccionar tallas y colores paa agregar productos', { type: 'warning' });
+                toast('Tienes que seleccionar tallas y colores para agregar productos', { type: 'warning' });
             }
         } else if (num === 0) {
             try {
