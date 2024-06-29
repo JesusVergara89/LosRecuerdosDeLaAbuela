@@ -13,22 +13,8 @@ const useCallBasket = (thisUser) => {
     const setQuantityofProducts = (value) => dispatch(setBasketProductValue(value));
 
     useEffect(() => {
-        const productREF = collection(db, 'Carrito');
-        const q = query(productREF, orderBy('createdAt', 'desc'));
-
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const Products = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            setAllBasket(Products)
-        });
-
-        return () => unsubscribe();
-    }, [thisUser, user]);
-
-    useEffect(() => {
         if (!user) return;
+
         const productREF = collection(db, 'Carrito');
         const q = query(productREF, orderBy('createdAt', 'desc'));
 
@@ -40,6 +26,7 @@ const useCallBasket = (thisUser) => {
             const myBasket = Products.filter(product => product.idBuyer === user.uid);
             setQuantityofProducts(myBasket.length);
             setProducts(myBasket);
+            setAllBasket(Products)
         });
 
         return () => unsubscribe();

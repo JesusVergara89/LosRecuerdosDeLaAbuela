@@ -81,7 +81,7 @@ const Header = () => {
     }
   });
 
-  console.log(allBasket)
+  //console.log(allBasket)
 
   return (
     <header>
