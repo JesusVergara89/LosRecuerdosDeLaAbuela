@@ -35,12 +35,25 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
 
                 <div className="card-details-2">
                     <div className="card-description">{product.description}</div>
-                    <div className="card-quantity">{`Cantidad: ${product.quantity}`}</div>
-                    <button onClick={handlePublish} className="card-btn-buy">
-                        Agregar al carrito
-                    </button>
+                    <div className="card-quantity">{`Cantidad: ${product.quantity - product.onShop_quantity}`}</div>
+                    {
+                        product.onShop_quantity === parseInt(product.quantity) ?
+                            <button className="card-btn-buy-no-more">
+                                Todos las unidades estan siendo compradas
+                            </button>
+                            :
+                            <button onClick={handlePublish} className="card-btn-buy">
+                                Agregar al carrito
+                            </button>
+                    }
                 </div>
-                <div className="card-created">{typeof (product.createdAt) === 'number' ? new Date(product.createdAt).toLocaleString() : product.createdAt.toDate().toDateString()}</div>
+                {product.onShop_quantity === parseInt(product.quantity) ?
+                    <div className="onshop">
+                        <h4>Regresa en 25 minutos para ver disponibilidad.</h4>
+                    </div>
+                    :
+                    ''
+                }
             </div>
         </>
     )

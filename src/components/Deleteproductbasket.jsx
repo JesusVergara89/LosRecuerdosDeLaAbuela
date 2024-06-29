@@ -1,15 +1,13 @@
-import { deleteDoc, doc } from 'firebase/firestore';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import React, { useEffect } from 'react';
 import { db } from '../firebaseConfig';
 import { toast } from 'react-toastify';
 
-const DeleteProductBasket = ({ product, pushingPrices, howManyProduct }) => {
-
-    const hours48InMillis = 48 * 60 * 60 * 1000;
+const DeleteProductBasket = ({ product, thisproduct }) => {
 
     const deleteDocAsync = async () => {
+        const docRef = doc(db, 'Carrito', product.id);
         try {
-            const docRef = doc(db, 'Carrito', product.id);
             await deleteDoc(docRef);
         } catch (error) {
             console.log(error);
@@ -17,16 +15,24 @@ const DeleteProductBasket = ({ product, pushingPrices, howManyProduct }) => {
         }
     };
 
-    useEffect(() => {
-        const now = Date.now();
-        if (product && product.createdAt) {
-            if ((now - product.createdAt) > hours48InMillis) {
-                deleteDocAsync();
+    const updateProduct = async () => {
+        const productsRef = doc(db, 'Products', product.productID);
+        if (product.onShop === thisproduct.onShop_quantity) {
+            try {
+                await updateDoc(productsRef, { onShop_quantity: 0 });
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            try {
+                await updateDoc(productsRef, { onShop_quantity: thisproduct.onShop_quantity - 1 });
+            } catch (error) {
+                console.log(error);
             }
         }
-    }, [product]);
+    }
 
-    return <div onClick={() => { deleteDocAsync(); pushingPrices(0, 3); howManyProduct(product,0) }} className='delete-product-basket'><i className='bx bxs-trash'></i></div>;
+    return <div onClick={() => { deleteDocAsync(); updateProduct() }} className='delete-product-basket'><i className='bx bxs-trash'></i></div>;
 };
 
 export default DeleteProductBasket;

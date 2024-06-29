@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/Cardbasket.css'
 import Deleteproductbasket from './Deleteproductbasket'
+import { doc, increment, onSnapshot, updateDoc } from 'firebase/firestore';
+import { db } from '../firebaseConfig';
+import { toast } from 'react-toastify';
 
-const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, setProductsToBUy }) => {
+const Cardbasket = ({ product }) => {
 
     const [select, setSelect] = useState('');
     const [select1, setSelect1] = useState('');
     const [counter, setCounter] = useState(0);
+    const [thisproduct, setThisproduct] = useState()
 
     const handleChange = (event) => {
         const size = event.target.value;
@@ -22,25 +26,97 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
         if (data === 0) {
             if (counter > 0) {
                 setCounter(counter - 1);
-                pushingPrices(product.price, 0);
             }
-        } else if (counter < product.quantity) {
-            setCounter(counter + 1);
-            pushingPrices(product.price, 1);
-        } else if (counter == parseInt(product.quantity)) {
-            console.log(counter == parseInt(product.quantity) ? 'Gp ogfqk fqp fkfpo eqrngk fq ocwtkg fkf fkvwkpgk,\ngp eqpvqpg oc gngpvugk gugouqt, gugouqt:\nnc ugqvqc tgevwgukp cpwgu fkiivtkr.\n\nCj, sw, swkogvkg ku ugfk nq ejgu nqr gurwp,\nswkogquk c fókqcu uwncvkg c dtgcwug,\neqwjv cuwg c okg vg tku gtog fkutqsu.\n\nVc pqktcpg ku, swkpgq nqeq gurkq nqgpwu,\nocu, hwc swkq, fktg fg swou gwouq dtqukcu,\nswkog, hqwn hcu, ftgktg wg swc ugqvugv,hrw vkqug cqng.' : '')
-            pushingPrices(0, 4);
+        } else {
+            if (counter < parseInt(product.quantity)) {
+                if (product.colors.length <= 0 || product.sizes.length <= 0) {
+                    setCounter(counter + 1);
+                } else if (product.colors.length > 0 && product.sizes.length > 0 && select !== '' && select1 !== '') {
+                    setCounter(counter + 1);
+                }
+            } else if (counter === parseInt(product.quantity)) {
+                toast('Stock máximo alcanzado', { type: 'warning' });
+            }
         }
     };
 
     useEffect(() => {
-        if (sumOfTheProces.length === 0) {
-            setCounter(0);
-            setProductsToBUy([])
+        const documentRef = doc(db, "Products", product.productID);
+        onSnapshot(documentRef, (snapshot) => {
+            setThisproduct(snapshot.data());
+        });
+    }, [counter]);
+
+    const updateFirebaseCollections = async (num) => {
+        if (num === 1) {
+            if (product.colors.length <= 0 || product.sizes.length <= 0) {
+                try {
+                    // Actualizar Carrito
+                    const carritoRef = doc(db, 'Carrito', product.id);
+                    let aux = product.tallas === '' ? select : product.tallas.concat(',', select)
+                    let aux2 = product.colores === '' ? select1 : product.colores.concat(',', select1)
+                    await updateDoc(carritoRef, { onShop: increment(1), tallas: aux, colores: aux2 });
+
+                    // Actualizar Products
+                    const productsRef = doc(db, 'Products', product.productID);
+                    await updateDoc(productsRef, { onShop_quantity: thisproduct.onShop_quantity + 1 });
+
+                    //toast('Actualización exitosa', { type: 'success' });
+                    setSelect('')
+                    setSelect1('')
+
+                } catch (error) {
+                    toast('Error actualizando el carrito', { type: 'error' });
+                    console.log(error)
+                }
+            } else if (product.colors.length > 0 && product.sizes.length > 0 && select !== '' && select1 !== '') {
+                try {
+                    // Actualizar Carrito
+                    const carritoRef = doc(db, 'Carrito', product.id);
+                    let aux = product.tallas === '' ? select : product.tallas.concat(',', select)
+                    let aux2 = product.colores === '' ? select1 : product.colores.concat(',', select1)
+                    await updateDoc(carritoRef, { onShop: increment(1), tallas: aux, colores: aux2 });
+
+                    // Actualizar Products
+                    const productsRef = doc(db, 'Products', product.productID);
+                    await updateDoc(productsRef, { onShop_quantity: thisproduct.onShop_quantity + 1 });
+
+                   //toast('Actualización exitosa', { type: 'success' });
+                    setSelect('')
+                    setSelect1('')
+
+                } catch (error) {
+                    toast('Error actualizando carrito', { type: 'error' });
+                    console.log(error)
+                }
+            } else {
+                toast('Tienes que seleccionar tallas y colores paa agregar productos', { type: 'warning' });
+            }
+        } else if (num === 0) {
+            try {
+                // Actualizar Carrito
+                const carritoRef = doc(db, 'Carrito', product.id);
+                let aux = product.tallas.split(',')
+                aux.pop()
+                let nuevaAux = aux.join(',')
+
+                let aux1 = product.colores.split(',')
+                aux1.pop()
+                let nuevaAux1 = aux1.join(',')
+                await updateDoc(carritoRef, { onShop: product.onShop - 1, tallas: nuevaAux, colores: nuevaAux1 });
+
+                // Actualizar Products
+                const productsRef = doc(db, 'Products', product.productID);
+                await updateDoc(productsRef, { onShop_quantity: thisproduct.onShop_quantity - 1 });
+
+                //toast('Actualización exitosa', { type: 'success' });
+
+            } catch (error) {
+                toast('Error actualizando carrito', { type: 'error' });
+                console.log(error)
+            }
         }
-    }, [sumOfTheProces]);
-
-
+    };
 
     return (
         <div className='Cardbasket'>
@@ -49,32 +125,34 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
             </div>
 
             <div className="cardbasket-price">
-                <h6>{`$ ${product.price * counter}`}</h6>
+                <h6>{product.onShop === 0 ? `$ ${product.price * counter}` : `$ ${product.price * product.onShop}`}</h6>
             </div>
 
             <div className="cardbasket-quantity">
-                <button onClick={() => { handleAddorsubs(0); howManyProduct(product, 0) }}><i className='bx bx-minus'></i></button>
+                <button onClick={() => { handleAddorsubs(0); parseInt(product.onShop) === 0 ? '' : updateFirebaseCollections(0) }}><i className='bx bx-minus'></i></button>
                 <div className="cardbasket-counter">
-                    {counter}
+                    {product.onShop == 0 ? counter : product.onShop}
                 </div>
                 <button onClick={() => {
                     handleAddorsubs(1);
-                    howManyProduct(
-                        {
-                            productID: product.productID,
-                            price: product.price,
-                            idBuyer: product.idBuyer,
-                            color: select1,
-                            size: select,
-                            photo: product.photo
-                        }
-                        , counter === parseInt(product.quantity) ? 4 : 1)
+                    thisproduct.onShop_quantity === parseInt(product.quantity)
+                        ?
+                        ''
+                        :
+                        updateFirebaseCollections(1)
                 }}><i className='bx bx-plus'></i></button>
             </div>
 
             {/**
              * From here all the html and jsx is in position absolute
              */}
+
+            {product.colors.length === 0 || product.sizes.length === 0 || product.tallas === '' || product.colores === '' ? '' :
+                <div className="tallas_colores">
+                    <h4 className="tallas"><span>Tus tallas: </span>{product.tallas}</h4>
+                    <h4 className="colores"><span>Tus Colores: </span>{product.colores}</h4>
+                </div>
+            }
 
             {product.colors.length === 0 ?
                 ''
@@ -107,7 +185,7 @@ const Cardbasket = ({ product, pushingPrices, sumOfTheProces, howManyProduct, se
             }
 
             <div className="cardbasket-date">
-                <Deleteproductbasket howManyProduct={howManyProduct} pushingPrices={pushingPrices} product={product} />
+                <Deleteproductbasket thisproduct={thisproduct} product={product} />
             </div>
         </div>
     );

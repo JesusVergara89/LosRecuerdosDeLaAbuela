@@ -3,13 +3,15 @@ import '../styles/Header.css'
 import logo from '../images/fodoabuela1.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebaseConfig';
+import { auth, db } from '../firebaseConfig';
 import { signOut } from 'firebase/auth';
 import Menu from './Menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBasketProductValue } from '../store/slices/basketproducts.slice';
 import useCallBasket from '../hooks/useCallBasket';
 import { setCallingBasketProductValue } from '../store/slices/callingbasket.slice';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 const Header = () => {
 
@@ -25,7 +27,7 @@ const Header = () => {
   const setQuantityofProducts = (value) => dispatch(setBasketProductValue(value));
   const callingBasketProducts = (value) => dispatch1(setCallingBasketProductValue(value));
 
-  const { products } = useCallBasket(thisUser)
+  const { products, allBasket } = useCallBasket(thisUser)
 
   callingBasketProducts(products.map(product => ({
     ...product,
@@ -48,6 +50,38 @@ const Header = () => {
   const toBasket = () => {
     navigate('/basket')
   }
+
+  const deleteDocAsync = async (id) => {
+    const docRef = doc(db, 'Carrito', id);
+    try {
+      await deleteDoc(docRef);
+    } catch (error) {
+      console.log(error);
+      toast('Error al borrar el producto', { type: "error" });
+    }
+  };
+
+  const updateProduct = async (id) => {
+    const productsRef = doc(db, 'Products', id);
+      try {
+        await updateDoc(productsRef, { onShop_quantity: 0 });
+      } catch (error) {
+        console.log(error);
+      }
+  }
+
+  const nowInMillis = Date.now();
+  const twentyFiveMinutesInMillis = 24 * 60 * 1000;
+
+  allBasket.forEach(product => {
+    const productCreatedAtInMillis = product.createdAt.seconds * 1000 + product.createdAt.nanoseconds / 1000000;
+    if ((nowInMillis - productCreatedAtInMillis) > twentyFiveMinutesInMillis) {
+      updateProduct(product.productID)
+      deleteDocAsync(product.id);
+    }
+  });
+
+  //console.log(allBasket)
 
   return (
     <header>

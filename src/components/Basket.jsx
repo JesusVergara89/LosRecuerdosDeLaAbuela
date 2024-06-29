@@ -1,63 +1,31 @@
 import { useSelector } from 'react-redux'
 import '../styles/Basket.css'
 import Cardbasket from './Cardbasket'
-import { useState } from 'react'
-import { toast } from 'react-toastify'
 
 const Basket = () => {
 
     const products = useSelector(state => state.callingbasket)
 
-    const [sumOfTheProces, setsumOfTheProces] = useState([])
-    const [productsToBuy, setProductsToBUy] = useState([])
-
-    const pushingPrices = (price, or) => {
-        if (or === 4) {
-            toast("El producto alcanzó la cantidad máxima en stock", { type: "warning" });
-            return;
-        }
-        if (or === 0) {
-            if (sumOfTheProces.includes(price)) {
-                const index = sumOfTheProces.indexOf(price);
-                setsumOfTheProces(prevState => prevState.filter((_, i) => i !== index));
-            }
-        } else if (or === 1) {
-            setsumOfTheProces(prevState => [...prevState, price]);
-        } else if (or == 3) {
-            setsumOfTheProces([]);
-        } 
-    };
-
-    const howManyProduct = (product, or) => {
-        //console.log(product) i need to create a hookthat update the prodcut and chane the cuentity for 14 min if the prodcutd is not buy it the quantity will be restore to the previous value'
-        if (or === 0) {
-            const productIndex = productsToBuy.findIndex(p => p.productID === product.productID);
-            if (productIndex !== -1) {
-                const updatedProducts = [...productsToBuy];
-                updatedProducts.splice(productIndex, 1);
-                setProductsToBUy(updatedProducts);
-            }
-        } else if (or === 1) {
-            setProductsToBUy(prevState => [...prevState, product]);
-        }
-    };
-
-    const totalValues = sumOfTheProces.map(data => parseFloat(data))
-
-    const productInfo = productsToBuy.map(product => {
-        if (product.size === '' && product.color === '') {
-            return `Id comprador: ${product.idBuyer}\nId producto: ${product.productID}\nPrecio: ${product.price}\nImagen: ${product.photo}\n\n`;
+    const productInfo = products.map(product => {
+        if (product && product.tallas && product.tallas !== '' && product && product.colores !== '') {
+            return `Id comprador: ${product.idBuyer}\nId producto: ${product.productID}\nColores requeridos: ${product.colores}\nTallas requeridas: ${product.tallas}\nPrecio: ${product.price}\nCantidad requerida: ${product.onShop}\n\nImagen: ${product.photo}\n\n`;
         } else {
-            return `Id comprador: ${product.idBuyer}\nId producto: ${product.productID}\nColor: ${product.color}\nTalla: ${product.size}\nPrecio:  ${product.price}\nImagen: ${product.photo}\n\n`;
+            return `Id comprador: ${product?.idBuyer}\nId producto: ${product?.productID}\nPrecio: ${product?.price}\nImagen: ${product?.photo}\n\n`;
         }
     }).join('\n');
 
     const sendMessageToWhatsApp = () => {
         const phoneNumber = '+526624698604';
-        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\n\nEl valor a pagar es: ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`;
+        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\n\nEl valor a pagar es: ${products.reduce((accumulator, current) => {
+            const price = parseFloat(current.price); 
+            const onShop = current.onShop;
+            return accumulator + (price * onShop);
+        }, 0)}`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappLink);
     }
+
+    //console.log(products)
 
     return (
         <div className='Basket'>
@@ -70,7 +38,7 @@ const Basket = () => {
                     </h6>
                     {
                         products && products.map((product, i) => (
-                            <Cardbasket setProductsToBUy={setProductsToBUy} howManyProduct={howManyProduct} sumOfTheProces={sumOfTheProces} pushingPrices={pushingPrices} index={i} key={i} product={product} />
+                            <Cardbasket key={i} product={product} />
                         ))
                     }
                 </div>
@@ -80,7 +48,11 @@ const Basket = () => {
                 :
                 <div className="Basket-total">
                     <div className="Basket-total-pay">
-                        <h6>{`TOTAL: $ ${totalValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}`}</h6>
+                        <h6>{`TOTAL: $ ${products.reduce((accumulator, current) => {
+                            const price = parseFloat(current.price); 
+                            const onShop = current.onShop;
+                            return accumulator + (price * onShop);
+                        }, 0)}`}</h6>
                     </div>
                     <button onClick={sendMessageToWhatsApp}>Comprar por WhatsApp</button>
                 </div>

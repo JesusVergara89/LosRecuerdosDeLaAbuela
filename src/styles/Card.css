@@ -56,16 +56,17 @@
 
 .card-details-2 {
     width: 100%;
-    height: 210px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .card-description {
     width: 95;
-    height: 150px;
+    height: 200px;
     font-size: 1rem;
     font-weight: 100;
     text-align: left;
@@ -135,9 +136,42 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.card-btn-buy-no-more {
+    all: unset;
+    width: 95%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 2px 5px 2px;
+    border-radius: 4px; 
+    margin-top: 10px;
+    background-color: #c00;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.8rem;
+}
+
 .card-btn-buy:hover {
-    background-color: #2980b9;
+    background-color: rgb(245, 26, 26);
     color: #ecf0f1;
+}
+
+.onshop {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.onshop h4 {
+    all: unset;
+    text-align: center;
+    margin-top: 9px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
 }
 
 /*For edit card*/

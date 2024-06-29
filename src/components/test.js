@@ -9,3 +9,16 @@ array2 = array1.map((data ,i, array)=> {
         obj[`${data[1]}`] = array[i][0]
     }
 })
+
+const objt = [
+{
+    obt1: 'casa',
+    price: '1000',
+    onShop: 1
+},
+{
+    obt2: 'depa',
+    price: '1000',
+    onShop: 2
+}
+]

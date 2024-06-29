@@ -7,6 +7,7 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 const useCallBasket = (thisUser) => {
     const [products, setProducts] = useState([]);
+    const [allBasket, setAllBasket] = useState([])
     const [user] = useAuthState(auth);
     const dispatch = useDispatch();
     const setQuantityofProducts = (value) => dispatch(setBasketProductValue(value));
@@ -16,7 +17,7 @@ const useCallBasket = (thisUser) => {
 
         const productREF = collection(db, 'Carrito');
         const q = query(productREF, orderBy('createdAt', 'desc'));
-        
+
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const Products = snapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -25,12 +26,13 @@ const useCallBasket = (thisUser) => {
             const myBasket = Products.filter(product => product.idBuyer === user.uid);
             setQuantityofProducts(myBasket.length);
             setProducts(myBasket);
+            setAllBasket(Products)
         });
 
         return () => unsubscribe();
-    }, [thisUser,user]);
+    }, [thisUser, user]);
 
-    return { products };
+    return { products, allBasket };
 }
 
 export default useCallBasket;
