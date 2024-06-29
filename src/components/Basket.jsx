@@ -16,7 +16,7 @@ const Basket = () => {
 
     const sendMessageToWhatsApp = () => {
         const phoneNumber = '+526624698604';
-        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\n\nEl valor a pagar es: ${products.reduce((accumulator, current) => {
+        const message = `Hola estoy interesad@ en los siguientes productos:\n----\n${productInfo}\nSi los productos tienen algún descuento, se vera reflejado en el total.\n\nDepositar en Bancomer:\n- Número de cuenta: 0127 6001 5224 895165\n- Clave interbancaría: 4152 3142 6339 3632\n- Número de tarjeta: 152 248 9516\n\nEl valor a pagar es: ${products.reduce((accumulator, current) => {
             const price = parseFloat(current.price);
             const onShop = current.onShop;
             const discount_percentage = parseInt(current.discount_percentage)
@@ -34,10 +34,7 @@ const Basket = () => {
                 :
                 <div className="basket-with-products">
                     <h6 className="basket-sellection">
-                        Recuerda que solo cuentas con 24 minutos para realizar tu compra o los seleeecionados
-                    </h6>
-                    <h6 className="basket-sellection">
-                        Si el producto aplica para <span>tallas</span> y <span>colores</span>, no te le olvide seleccionar la talla y el color adecuado antes de agregar cantidades del mismo.
+                        Cuentas con <span>24 minutos</span> para realizar tu compra o los productos seleccionados quedarán libres para otros compradores.
                     </h6>
                     {
                         products && products.map((product, i) => (
