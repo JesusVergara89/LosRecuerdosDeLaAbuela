@@ -2,10 +2,14 @@ import React from 'react'
 import '../styles/Card.css'
 import Likes from './Likes';
 import useBasket from '../hooks/useBasket'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebaseConfig';
 
 const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
 
     const { handlePublish } = useBasket(product)
+
+    const [user] = useAuthState(auth)
 
     return (
         <>
@@ -50,6 +54,7 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
                 {product.onShop_quantity === parseInt(product.quantity) ?
                     <div className="onshop">
                         <h4>Regresa en 25 minutos para ver disponibilidad.</h4>
+                        <h4>{user ? '': `Inicia sesión`}</h4>
                     </div>
                     :
                     ''

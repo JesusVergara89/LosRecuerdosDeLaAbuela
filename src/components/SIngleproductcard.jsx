@@ -3,11 +3,15 @@ import '../styles/SIngleproductcard.css'
 import useBasket from '../hooks/useBasket'
 import Likes from './Likes'
 import Comments from './Comments'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../firebaseConfig'
 
 const SIngleproductcard = ({ product }) => {
 
     const { handlePublish } = useBasket(product)
-    
+
+    const [user] = useAuthState(auth)
+
     const commentsRef = useRef(null);
 
     const scrollToComments = () => {
@@ -43,11 +47,25 @@ const SIngleproductcard = ({ product }) => {
                 <div className="card-details-2">
                     <div className="card-description">{product.description}</div>
                     <div className="card-quantity">{`Cantidad: ${product.quantity}`}</div>
-                    <button onClick={handlePublish} className="card-btn-buy">
-                        Comprar
-                    </button>
+                    {
+                        product.onShop_quantity === parseInt(product.quantity) ?
+                            <button className="card-btn-buy-no-more">
+                                Todos las unidades estan siendo compradas
+                            </button>
+                            :
+                            <button onClick={handlePublish} className="card-btn-buy">
+                                Agregar al carrito
+                            </button>
+                    }
                 </div>
-                <div className="card-created">{product.createdAt.toDate().toDateString()}</div>
+                {product.onShop_quantity === parseInt(product.quantity) ?
+                    <div className="onshop">
+                        <h4>Regresa en 25 minutos para ver disponibilidad.</h4>
+                        <h4>{user ? '' : `Inicia sesión`}</h4>
+                    </div>
+                    :
+                    ''
+                }
             </div>
             <div className="card-description-all-details">
                 <label>Descripción</label>
