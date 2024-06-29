@@ -21,12 +21,13 @@ const useBasket = (product) => {
                 tallas: '',
                 colores: '',
                 quantity: product.quantity,
-                onShop: 0 
+                onShop: 0,
+                discount_percentage: product.discount_percentage 
             });
             toast("Producto agregado correctamente", { type: "success" });
         } catch (e) {
             console.log(e)
-            toast("Error agregando el producto", { type: "error" });
+            toast("Error agregando el producto - Necesitas crear una cuenta primero", { type: "error" });
         }
     };
 
