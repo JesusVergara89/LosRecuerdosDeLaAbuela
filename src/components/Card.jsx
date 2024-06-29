@@ -54,7 +54,7 @@ const Card = ({ setIDValue, product, handleScrollToTop, handleClick }) => {
                 {product.onShop_quantity === parseInt(product.quantity) ?
                     <div className="onshop">
                         <h4>Regresa en 25 minutos para ver disponibilidad.</h4>
-                        <h4>{user ? '': `Inicia sesión`}</h4>
+                        <h4>{user ? '': `o Inicia sesión`}</h4>
                     </div>
                     :
                     ''

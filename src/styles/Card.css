@@ -162,6 +162,7 @@
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -169,9 +170,8 @@
 .onshop h4 {
     all: unset;
     text-align: center;
-    margin-top: 9px;
-    margin-bottom: 8px;
-    font-size: 0.8rem;
+    margin-top: 3px;
+    font-size: 0.75rem;
 }
 
 /*For edit card*/
